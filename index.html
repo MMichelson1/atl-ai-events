@@ -2,513 +2,226 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ATL AI Events | AI Collective Atlanta</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlanta AI Events — Curated by the AI Collective</title>
 <style>
-:root{--or:#F97316;--bl:#0076db;--ib:#4f79ae;--gr:#374151;--ao:#ff915a;--gn:#428c38;--pp:#f5f2eb;--ik:#0f0e0c;--ru:#d4cfc4;--mu:#6b6560;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--pp);color:var(--ik);font-family:system-ui,-apple-system,sans-serif;font-size:14px;line-height:1.5;}
-a{color:var(--bl);text-decoration:none;}a:hover{text-decoration:underline;}
-.mast{background:#fff;border-bottom:6px solid var(--or);padding:14px 20px 12px;text-align:center;}
-.bar-top{height:4px;background:linear-gradient(90deg,var(--bl),var(--ib));margin-bottom:12px;}
-.bar-bot{height:3px;background:linear-gradient(90deg,var(--or),var(--bl));margin-top:10px;}
-.logo-wrap{display:flex;justify-content:center;margin-bottom:8px;cursor:default;}
-.logo-wrap img{height:clamp(44px,8vw,70px);width:auto;max-width:320px;}
-.pill{display:inline-block;background:linear-gradient(90deg,var(--or),var(--ao));color:#fff;font-size:11px;font-weight:900;letter-spacing:.25em;padding:3px 18px;border-radius:2px;text-transform:uppercase;margin-bottom:6px;}
-.title{font-family:Georgia,serif;font-weight:900;font-size:clamp(36px,9vw,80px);letter-spacing:.02em;line-height:.95;}
-.tag{font-size:clamp(10px,2.5vw,13px);color:var(--mu);font-style:italic;margin-top:5px;line-height:1.7;}
-.meta{font-size:10px;color:var(--mu);margin-top:5px;text-transform:uppercase;letter-spacing:.05em;}
-.srch{background:var(--gr);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:3px solid var(--or);}
-.srch input,.srch select{font-family:inherit;font-size:13px;padding:8px 10px;border:2px solid var(--ib);background:#fff;color:var(--ik);border-radius:4px;}
-.srch input{flex:1 1 160px;min-width:0;}
-.srch select{flex:0 1 165px;}
-.cnt-wrap{max-width:1100px;margin:0 auto;padding:0 12px;}
-.box{margin-top:20px;border-radius:6px;overflow:hidden;}
-.feat-box{border:3px solid var(--bl);}
-.feat-hd{background:var(--bl);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;}
-.feat-logo{height:30px;width:auto;max-width:160px;}
-.feat-pill{font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);padding:2px 8px;border-radius:10px;margin-left:10px;}
-.feat-pg-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;padding:3px 10px;border-radius:3px;cursor:pointer;font-weight:700;font-size:13px;}
-.feat-pg-btn:disabled{opacity:.4;}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--ru);}
-.feat-card{background:#f0f4ff;padding:12px 14px;display:flex;flex-direction:column;gap:4px;}
-.feat-aic{font-size:9px;font-weight:900;color:var(--ao);letter-spacing:.12em;}
-.feat-name{font-weight:700;font-size:13px;color:var(--ik);line-height:1.3;}
-.feat-meta{font-size:11px;color:var(--mu);line-height:1.8;}
-.feat-reg-row{display:flex;justify-content:flex-end;margin-top:4px;}
-.feat-dots{background:#fafafa;padding:6px;display:none;justify-content:center;gap:6px;}
-.feat-dot{width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;}
-.cal-box{border:3px solid var(--bl);}
-.cal-hd{background:linear-gradient(90deg,var(--bl),var(--ib));padding:8px 16px;display:flex;align-items:center;justify-content:space-between;}
-.cal-hd .ttl{font-family:Georgia,serif;font-weight:900;font-size:15px;color:#fff;letter-spacing:.08em;text-transform:uppercase;}
-.cal-nav{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;padding:4px 12px;border-radius:3px;cursor:pointer;font-weight:700;font-size:13px;}
-.cal-mon{color:#fff;font-weight:900;font-size:14px;min-width:140px;text-align:center;}
-.cal-dows{display:grid;grid-template-columns:repeat(7,1fr);background:rgba(0,118,219,.08);}
-.cal-dow{text-align:center;padding:5px 2px;font-size:11px;font-weight:700;color:var(--bl);border-bottom:2px solid var(--bl);}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--ru);}
-.cal-cell{min-height:60px;border:1px solid var(--ru);padding:4px;background:#fff;}
-.cal-cell.oth{background:#f4f4f4;}
-.cal-cell.tod{background:#fff8e7;}
-.cal-cell.hev{background:#f8fbff;border-color:var(--bl);cursor:pointer;}
-.cal-cell.hev:hover{background:#e4f0ff;}
-.cal-dn{font-size:11px;font-weight:600;color:var(--gr);display:block;margin-bottom:3px;}
-.cal-dn.tnm{font-weight:900;color:var(--or);}
-.cal-dots{display:flex;flex-wrap:wrap;gap:2px;margin-top:2px;}
-.cal-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.cal-leg{padding:7px 12px;background:#f9f9f9;font-size:10px;color:var(--mu);display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
-.cal-exp-btn{margin-left:auto;background:var(--bl);color:#fff;border:none;border-radius:3px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;}
-.ev-box{border:3px solid var(--or);}
-.ev-hd{background:linear-gradient(90deg,var(--or),var(--ao));padding:8px 16px;}
-.ev-hd .ttl{font-family:Georgia,serif;font-weight:900;font-size:15px;color:#fff;letter-spacing:.08em;text-transform:uppercase;}
-.ev-row{border-bottom:1px solid var(--ru);padding:14px 16px;display:grid;grid-template-columns:60px 1fr;gap:14px;}
-.ev-row.aic-r{background:#fffbf5;}
-.ev-row:not(.aic-r){background:#fff;}
-.ev-dc{text-align:center;padding-top:2px;padding-right:10px;}
-.ev-dc.aic-c{border-right:2px solid var(--or);}
-.ev-dc.oth-c{border-right:2px solid var(--ru);}
-.ev-day{font-family:Georgia,serif;font-size:30px;font-weight:900;line-height:1;}
-.ev-dn,.ev-mo{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--mu);}
-.ev-aic-lbl{font-size:9px;font-weight:900;color:var(--or);letter-spacing:.1em;margin-bottom:3px;}
-.ev-nm{font-size:15px;font-weight:700;margin-bottom:3px;line-height:1.3;}
-.ev-nm a{color:var(--ik);}
-.ev-nm a:hover{color:var(--or);}
-.ev-mt{font-size:12px;color:var(--mu);display:flex;flex-wrap:wrap;gap:3px 10px;margin-bottom:5px;}
-.ev-desc{font-size:12px;color:var(--mu);margin-bottom:8px;line-height:1.5;}
-.ev-r1{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:5px;}
-.ev-r2{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;}
-.ev-reg-w{display:flex;align-items:center;gap:6px;}
-.badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap;}
-.b-city{background:#fff;color:var(--gr);border:2.5px solid var(--bl);font-weight:900;}
-.b-free{background:var(--gn);color:#fff;}
-.b-paid{background:#dc2626;color:#fff;}
-.b-ver{background:#dbeafe;color:#1e40af;border:1.5px solid #93c5fd;}
-.b-org{background:#fff7ed;color:var(--bl);border:1.5px solid var(--or);}
-.ev-reg{background:var(--bl);color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:3px;text-decoration:none;white-space:nowrap;}
-.ev-reg:hover{text-decoration:none;}
-.aic-ico{height:24px;width:24px;border-radius:50%;flex-shrink:0;}
-.no-ev{padding:30px;text-align:center;color:var(--mu);font-style:italic;}
-.src-box{border:2px solid var(--ru);margin-top:20px;border-radius:6px;overflow:hidden;}
-.src-hd{background:var(--gr);padding:8px 16px;}
-.src-hd span{font-family:Georgia,serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:.08em;text-transform:uppercase;}
-.src-body{padding:12px 16px;}
-.src-list{columns:3 120px;column-gap:12px;font-size:11px;color:var(--mu);line-height:2.1;}
-.src-list span{display:block;break-inside:avoid;}
-.src-list span::before{content:"• ";color:var(--bl);}
-.sub-box{border:3px solid var(--ao);margin-top:20px;margin-bottom:24px;border-radius:6px;overflow:hidden;}
-.sub-hd{background:linear-gradient(90deg,var(--ao),var(--or));padding:10px 16px;}
-.sub-hd .ttl{font-family:Georgia,serif;font-weight:900;font-size:15px;color:#fff;letter-spacing:.08em;text-transform:uppercase;}
-.sub-body{padding:16px 20px;}
-.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:10px;}
-.sub-grid input,.sub-ta{font-family:inherit;font-size:13px;padding:9px 12px;border:1.5px solid var(--ru);border-radius:4px;color:var(--ik);background:#fff;width:100%;}
-.sub-ta{height:70px;resize:vertical;}
-.sub-btn{background:var(--or);color:#fff;border:none;font-weight:900;font-size:14px;letter-spacing:.06em;padding:10px 24px;cursor:pointer;border-radius:4px;}
-.sub-ok{display:none;background:var(--gn);color:#fff;padding:10px;font-size:12px;text-align:center;margin-top:6px;border-radius:4px;}
-.foot{background:var(--gr);padding:14px 20px;text-align:center;font-size:11px;color:#aaa;}
-.foot-bar{height:3px;background:linear-gradient(90deg,var(--or),var(--bl));margin-bottom:10px;}
-.overlay{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px;}
-.overlay.on{display:flex;}
-.pop-box{background:#fff;border:3px solid var(--bl);border-radius:6px;width:100%;max-width:440px;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.35);}
-.pop-hd{background:linear-gradient(90deg,var(--bl),var(--ib));padding:12px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-radius:3px 3px 0 0;}
-.pop-date{font-family:Georgia,serif;font-weight:900;font-size:17px;color:#fff;}
-.pop-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;}
-.pop-cls{background:none;border:none;color:rgba(255,255,255,.7);font-size:22px;cursor:pointer;padding:0;line-height:1;}
-.pop-body{overflow-y:auto;padding:4px 18px 16px;}
-.pop-ev{padding:13px 0;border-bottom:1px solid var(--ru);}
-.pop-ev:last-child{border-bottom:none;}
-.pop-en{font-family:Georgia,serif;font-weight:900;font-size:16px;color:var(--ik);margin-bottom:4px;line-height:1.2;}
-.pop-mt{font-size:12px;color:var(--mu);margin-bottom:7px;line-height:1.7;}
-.pop-bgs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
-.pop-reg{display:inline-block;background:var(--bl);color:#fff;font-weight:700;font-size:13px;padding:7px 18px;text-decoration:none;border-radius:4px;}
-.cal-exp{display:none;position:fixed;inset:0;z-index:8990;background:rgba(0,0,0,.6);flex-direction:column;}
-.cal-exp.on{display:flex;}
-.cal-exp-inner{background:#fff;width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;}
-.cal-exp-hd{background:linear-gradient(90deg,var(--bl),var(--ib));padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.cal-exp-cls{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;padding:6px 16px;border-radius:3px;cursor:pointer;font-weight:900;font-size:14px;}
-.cal-exp-dows{display:grid;grid-template-columns:repeat(7,1fr);background:rgba(0,118,219,.08);flex-shrink:0;}
-.cal-exp-dows div{text-align:center;padding:6px 2px;font-size:12px;font-weight:700;color:var(--bl);border-bottom:2px solid var(--bl);}
-.cal-exp-wrap{flex:1;overflow-y:auto;}
-.cal-exp-grid{display:grid;grid-template-columns:repeat(7,1fr);min-height:480px;}
-.cal-exp-cell{border:1px solid var(--ru);padding:6px;background:#fff;vertical-align:top;}
-.cal-exp-cell.hev{background:#f0f6ff;border-color:var(--bl);}
-.cal-exp-cell.tod{background:#fff8e7;}
-.cal-exp-cell.oth{background:#f8f8f8;}
-.cal-exp-dn{font-size:12px;font-weight:900;color:var(--gr);margin-bottom:4px;}
-.cal-exp-ev{margin-bottom:4px;display:flex;align-items:flex-start;gap:4px;}
-.cal-exp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;}
-.cal-exp-lnk{font-size:11px;color:var(--bl);font-weight:600;line-height:1.4;}
-.cal-exp-sm{font-size:10px;color:var(--mu);margin-left:12px;}
-.cal-exp-leg{padding:8px 16px;background:#f9f9f9;border-top:1px solid var(--ru);display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--mu);flex-shrink:0;}
-.pin-ov{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);align-items:center;justify-content:center;}
-.pin-ov.on{display:flex;}
-.pin-box{background:var(--pp);border:3px solid var(--ik);border-radius:6px;padding:28px 32px;max-width:320px;width:90%;text-align:center;}
-.pin-ti{font-family:Georgia,serif;font-weight:900;font-size:22px;margin-bottom:6px;}
-.pin-su{font-size:12px;color:var(--mu);margin-bottom:18px;}
-.pin-in{font-size:20px;text-align:center;letter-spacing:.3em;padding:10px;border:2px solid var(--ik);width:100%;border-radius:4px;margin-bottom:12px;font-family:inherit;}
-.pin-er{display:none;color:#dc2626;font-size:12px;margin-bottom:10px;}
-.pin-bts{display:flex;gap:8px;}
-.pin-ok{background:var(--ik);color:var(--pp);border:none;font-weight:900;font-size:15px;padding:9px 24px;cursor:pointer;flex:1;border-radius:4px;}
-.pin-cn{background:none;color:var(--ik);border:2px solid var(--ik);font-weight:900;font-size:15px;padding:9px 16px;cursor:pointer;border-radius:4px;}
-.mgr-panel{display:none;position:fixed;bottom:20px;right:20px;z-index:9998;background:var(--gr);color:#fff;padding:16px 20px;min-width:240px;box-shadow:0 4px 20px rgba(0,0,0,.5);border-left:4px solid var(--or);border-radius:4px;}
-.mgr-panel.on{display:block;}
-.mgr-btn{display:block;width:100%;text-align:left;border:none;font-weight:700;font-size:13px;padding:9px;cursor:pointer;margin-bottom:7px;border-radius:3px;}
-@media(max-width:768px){.src-list{columns:1;}.ev-row{grid-template-columns:52px 1fr;gap:8px;}.ev-day{font-size:26px;}.ev-desc{display:none;}.feat-grid{grid-template-columns:1fr;}}
-@media(max-width:420px){.logo-wrap img{height:40px;}.ev-row{grid-template-columns:46px 1fr;gap:6px;}.cal-cell{min-height:44px;}}
+  :root { --aic-orange: #FF6B00; --aic-orange-light: #FFF4EA; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #fafafa; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 24px 16px 64px; }
+  header.hero { background: #111; color: #fff; border-radius: 16px; padding: 32px 28px; margin-bottom: 24px; }
+  header.hero h1 { margin: 0 0 8px; font-size: 30px; }
+  header.hero h1 .accent { color: var(--aic-orange); }
+  header.hero p { margin: 4px 0; color: #ccc; }
+  .legend { display: flex; gap: 16px; align-items: center; background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 12px 16px; margin-bottom: 24px; font-size: 14px; }
+  .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: var(--aic-orange); margin-right: 6px; vertical-align: -2px; }
+  h2 { font-size: 22px; margin: 32px 0 12px; }
+  .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  @media (max-width: 760px) { .week-grid { grid-template-columns: 1fr 1fr; } }
+  .day { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 10px; min-height: 120px; }
+  .day.today { border-color: var(--aic-orange); box-shadow: 0 0 0 1px var(--aic-orange); }
+  .day-name { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #777; }
+  .day-date { font-size: 20px; font-weight: 700; margin: 2px 0 8px; }
+  .chip { display: block; font-size: 12.5px; line-height: 1.35; border-radius: 8px; padding: 7px 8px; margin-bottom: 6px; text-decoration: none; color: #1a1a1a; background: #f1f1f1; border-left: 4px solid #bbb; }
+  .chip:hover { background: #e8e8e8; }
+  .chip.aic { background: var(--aic-orange-light); border-left-color: var(--aic-orange); font-weight: 600; }
+  .chip .t { display: block; color: #666; font-weight: 400; font-size: 11.5px; margin-top: 2px; }
+  .chip.aic .badge { display: inline-block; background: var(--aic-orange); color: #fff; font-size: 10px; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-bottom: 4px; letter-spacing: .04em; }
+  .event { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+  .event.aic { border-left: 6px solid var(--aic-orange); }
+  .event h3 { margin: 0 0 4px; font-size: 17px; }
+  .event h3 a { color: #1a1a1a; text-decoration: none; }
+  .event h3 a:hover { text-decoration: underline; }
+  .event .meta { font-size: 13.5px; color: #555; margin: 2px 0; }
+  .event .desc { font-size: 14px; color: #333; margin: 8px 0 0; }
+  .event .aic-tag { display: inline-block; background: var(--aic-orange); color: #fff; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; margin-bottom: 8px; letter-spacing: .05em; }
+  .btn { display: inline-block; margin-top: 10px; background: #111; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 8px 16px; border-radius: 8px; }
+  footer { margin-top: 40px; font-size: 13px; color: #888; text-align: center; }
 </style>
 </head>
 <body>
+<div class="wrap">
 
+  <header class="hero">
+    <h1>Atlanta AI Events <span class="accent">·</span> This Week</h1>
+    <p>Every in-person AI meetup, class, and hackathon around Atlanta — curated by the AI Collective.</p>
+    <p style="font-size:13px;">Week of Sunday, October 4 – Saturday, October 10, 2026 · Updated October 4, 2026</p>
+  </header>
 
-<div class="mast">
-  <div class="bar-top"></div>
-  <div class="logo-wrap" id="logo-wrap">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAABqCAYAAAAV&#43;XttAABQv0lEQVR42u19d4AV1dn&#43;855zZuaW3YWlF&#43;lNQEEFUWm7YMEeo14SS6L5JTE9MeZLjClervlM&#43;5IYU0zil2hMoiZcWyyxIrsIiMoKIiwWQHrZXVi23DIz55z398fchQXRaIIt374Kd9k7d2buzDPved5OeBclDYjqdJU45Xu12tjO7wwYM3VInxGnTexeedyIHgPKio1TuiVby227mUo2Vj6qfBsnOCQL8bp9Elm02DLemE8SHNrZlg&#43;2FWX5Ku14Ly7bgg2PvrR3R92rzauBHfmOz0gC9N9Sct6aLGcysOiSD6QwsyIizcyfBfAbAJreFSCnIeaNTxHNzZqO3w2edEn/a4asP7N/LzqxO&#43;09uadrhw2Ma3QXAMEApAHdglDEwIEEkQHj9adLLEEESFF6VzqA8KBh0eoL7PC9sFVjQ6PvPrPLJhasLPRYelP2/vUAMQAIAkwXuLsA/VZkfiolU&#43;OyTCWg9B93yuDPjMqljuvnXDg60XTk4ESxexwa0AyEATTYarIs2YKZyJIrlDUAEWyEv9cDGgKWLAxpEEuWRjBBMwggcoUSRFABoFwEJoZdvgi35pIvr9pln3lqu5h/&#43;7PblwKN7dEFgsjOTdHcbNYC4C7IdAF6P5DnZy1RBIqrLjj92DkD9Sf6U/OlYxOtlUq0AYEPbYRmqxCSECQCoZhBLGBJATAABBgSTBaCD608mQhgQLAAYMHEJU3OEMxggBnMTMoKNuQISHIIkOXY1S6wIYf1m7jyT7e9YB94ZPlzKwFiQcBfL0zJLmD/Hwd0Op0W8&#43;ZluAPI16TOOfWsI9o&#43;P1xtP7u/l1Pw8wis1MYIQUQkiKmzrgUA7kQsuPRXBMroZyLYAzDGJEofIKLOe3rd1wdAYIAtBEtYKwVL6SiCkNjY7vg7/fKHn9rm/PEbD4RPAKtyRMC1M6tUprbWdAH7/xagiZlBFPGCz5w29ZLUMHPF&#43;G75mf3UbtiigUagLaSEECQsl2BHJZyUYMwAMzMRrCRiJQAQEwRJEADxeqMQNvo8DDMAayzYWsACZEFCEEo4JwA2AnWJvjAAqbUNZBknkZfwJPbaSrzQGtuwcpd3w5X3bLgbaNohCbjzQsi5WZguGP2HAzqdTovvXZexloHUGR86&#43;sKBrT&#43;b3avllF60E7pYZA1hJYQAMVmITjCO1Lhlw461TNJjKUlAWIKMsNeeE2jWCg1thcBxnZZNTT48T27ypCoCgAZETNKYhEdIkO7ZOw4kYw48xYDUgNVAyCZkzZYlWY4JRT5ZErAgSBiAJRgCxJYNkVUwwnGJNCqwvDG55cmt4lfffnTzb4DdbcygeQTKoMt4/I8ENM9Pychz8Tvn&#43;vNv&#43;d8LB/NFo&#43;PbXRRbbZ4SLMGSDrFSWwYEGyOkhHKEhBDwA42NLQJrG0Xr9iIvaWovLFu7KQh35JLrave01gF&#43;Y&#43;njbQftrgfQzR5TLsaNrKCBw/uqgT0q1KRh3b2R/crCMaMq/cr&#43;iQpAFYHAh29jhmwBBBZMig6mJQwCM1sBYV2PVB5x1O6oWHvb8sZb/rZm&#43;08AYGFVlZrVRUP&#43;cwCdBsS8NARloL829&#43;zjL6zcc8vkPk1HqcJehNoYIpZMcp9x1sFqLTMLIut6IJAVLUUP9dsQLN2e27SmTfxl5Uv8&#43;Ipi8yYA2w9yZUSanQBj9il5IGIhtuShOIRU9Dh9MJ1cNdQ9ekRPd&#43;ag7nTSxJ7KjccY8FugjTQ&#43;O0KRJTqIyxMzNAsLxRx3IHcGFXjoNVXz46dz33llx&#43;YlUgDfsRCZDs7UJR9MQDODBIEZhL9&#43;5azPzEhs&#43;/EAaqzQ&#43;ZyxUIKlILICEhpMgIaCZc0OsXXcuAQCPL9doG6Hrnl2R/vffr&#43;68CSALQAK&#43;/zCNi1qqjOisQ/411lQNWAz&#43;0HDr/PcAUgBIpUC1jSA5n0hxUjNt0IQdwK6BHqN&#43;NmcsmOGlMuPjeiDqokV&#43;XKwRajJGqMhQYIlwLAglpAMMAR8Cm2cwCIek3XN5a2LN/DVVz788u8BaEGA3f/kdskHCdDpdJXKZGp1/NiPDnj&#43;wy1fH&#43;ZvvdIr7kDRkiESB9ALSwJswXHyLVxPhtrBYxsKpmYj/vS35wt3bkFuEQAfVIrcfRdibgaUjfjp4QIHpVIQn28AnbII2nTa6xG9R4y8eER4zSlDnTOnDAz6dfN86NAYoy0JOAJgdLhrCIAlAtiYmANZEN1w91qx8OtP7P7iznZvo6SdecMlv2GXfCAATZxOE2Vu6H7WlCMHfW&#43;G&#43;sOxyW2TdEvOWIJgITs8dSAAhgkEYzwPsmiTWPBqGNyzNrzrlpcavw9gTQf/nvfrLGVq9wH4ndZwlAZofAqUSqWwP2pZ3vPKmQOmTu3Z9oPZw2h8T9fAFEOTl57w2BDBRry6dKWsBXswRiQTaun25N5frdKfunP5ugeYOSz5Dbs09fsd0AvTVWpWplZ/evbsMz4/ofmuY&#43;K7Enk/MERKSrYQzLAEMBRCNlzmWAvhykfXw79rrfnz71fv&#43;iGA9SCAI/cXsnhvXWBpQMxjsBRgG0Ewcem4/pdeMjn22ZMHFI91TAg/NNbKmJCsSy5vAoHBDBgWJhG3ckO&#43;Ej9Z4tzym&#43;fWfDpyORJ1aer3MaBLFr0&#43;b9rk86&#43;dJm87VqwvC4psSAgJEIgBIyyIAcEwKu7I1/YS/vCMrr2&#43;bs/VgH6GCLDXQlAmUnLvs&#43;tC81MQF90NEyVMpdWnj/v9Xy4/xj1n6sAwgfZWk6Ny6UB3Ur4EgkVowQkleI/oIX6/Vt179QObPiWpdY9hdNGP9yOgOZ0WlMnYj0475rJrTlK/mSBejedCZZVwBDjyKhMM2qVA0krjuFbeu1Y23Lw0991HGlpuJgL&#43;Fmlk/gDcYEpXQc6rgSECKitHjPvVyfKPF4zQkz3TZouaSQhJBzMKY13EVYvWiZ7qlmXiqc88tvMjRPkdlkHURT/eP4Cen0rJudksf&#43;jYCanMDPHXifEm9v0cGxUTjjUgZhhhYZiQEI5pQUz&#43;6pn2Bd95qvH/AdjM6fetRn5LnpySUaB&#43;ePZR/3X&#43;sMIPRpXn4Bc0EwliEDpsBiMAWAnX&#43;lpWJNQtq7ut&#43;co9m2a1cXsTEbo49bsMaHFobwZEalyWjz32tOHfmpn4ycREAxcD35LwhLIhmAIwXFgjOeHCbmxT8sp7m&#43;/6zlONpwnC5nQVVCnD7gO57BKB04BgZvPNB1f/8L8XB599eld5OymPDQSLTl9LWEBBIyRH2UI&#43;&#43;NiI4viPHV2RIgKnq6pkF&#43;zeXTkkoKtRJSgj7K1z/O9Pqdh2RN4PjCSSgAVBQNgkQhQ5HnP4mddi4sr793z5j&#43;v3ppjTsAyRqYX&#43;oF&#43;YDGCJCAvTVbE/rdjyuxtWJq9vowoRR8Fwp9hORxifiCGMArvtyAW5QdFearsQ9i6Lep0aj8LZ&#43;m9fPOu7R6kNqaC1YISSKopQEKwIgYA4EXd4wXYhrnm4/ZLnWvN3cBqCKPMfFTUrJVwVf5iaefGnxha&#43;1C23zeYpIRXrg7YjCDIacdf9zVJu&#43;fvLLb8jAkouyS55rwA9P5WSYm7WfHLmhPNPSmy5TuYbjBEkpeUowV5YWCMQT2qzaltcXXX33q&#43;tyrXdsTCiGP9JuQ3E6SpJRPJ/PnXuOamem2/rWdisAkMshSWG2M&#43;hiRE3jkYZqzvrgtXphU2XtxI2MqPLffceA5pS48bxXDBdMm7yjwfJneyHAkRRRYglhjACcUF6Z2tc/XBZ&#43;9dW5dpuSI8b586qrQ8Ou8cBIKTTGF9fT73HNVA1AIzvE6FoTQNhfB/GmgaqAdBY34fXjMtyJnNYAjSi5E/Wv7r8tOtTvTd/o0&#43;41RaNZCEEHRANtUBcmjDwyLm1Rj/42SV7Pk0CO6&#43;Ncjy6wPxeaKKDqIa58aMzrv/0iJZrnPYt1kg3CmeThbAEZmWNFxPfeqjlwRtW7zmn5A04bJZ8Og1RjUMV0b5FJJbyQLJz6ymVzdq36zZjgBSBDUP&#43;5pPnXX9J/41Xl&#43;c36AIcKSEoMjl4H5hjDnQgk&#43;r6x9prrnu&#43;cZYUhPMty3c4aERVVVWyT5/o4c5msx8El&#43;i77rYjZmD8SanKO47dsGli2Y4yXwdMJKikssAwxvESIruWXpz79y2TmNP2MHFmMT&#43;Vos61hwASwLG9r5gztOfs/oWB5bG9feNlseG7d/pDAmPdEQO7vbS5sWVE7&#43;7uK03te19b21TeuGDvwFdqa1dsAdb5&#43;79wWmTnZmhu9p/nhxAR7IUsKTu6MvvVsd&#43;Zk9j8lWRhkwlYSggJZS20jMq6jCGOe7AN7a787YrwR&#43;mlDT9iRstcAv2LYKZUKiXeyobZbNa8h8qPO70epIzSor6&#43;nt7N831DQHeEtp/&#43;3ic&#43;MUkvu0W0bjIGlRIUAmCwVZAe2/W7WVyWLc56rrWl5gLGv6uJiOenhJib3Zcz9PkzLx4ytnfuw71o66eGue2jBiSV29MDPOVDUgjYkneBCOAQUc2hQUvYDbsC5e9qNTs2F/Hiq3nvzl8/amt3F1Zs79DcC2a&#43;cQ5zVVWVqq2tJUCE93355Ls/VPna&#43;ba1MQwp5nRQDKao2gWa2Isr29helN98WP/ilvWtX5ECMPbdybibMnJkheo/5Oekkr2hpOYw/OvSmgf/lkql5HsI9veNhlYARHWm1owaPGp4fM/LP3CcXZwTnvCsLqlLAiOwihPirytyi59paXmOOS2IMv/yxSsFbUyUIDRyxK8uGzjjuD7yvF5m9ZwhCT/mmnbAhDAWYN8Y7QOaBGsClI3cZFaEcK0Cg6iCdqK7YG9MHzEUbmxom5885yM9qP3l4uRFT2wJ77jpqfWPzaqtbSQANpWStL/4leanUmJuNote/ceeePfF/a6amXz5PLt3ty6q7o7isATmkl4KBHuxGK9ttPKmZcVv37I&#43;/31O/&#43;sGcQcIp06dPUslyr4chNYRbJNMzJJkG4jZWi5nMFnh&#43;J5MFI1pu5c5XKBDuj5R1n1Iu22sB/C3hoaGd6TgOY3IHjj55LOGFyDu3Ll3T2pD3ZLNJZevTafTIpPJ2JNmnvZj4cWnsLbN0ZUVZUQmUAlcVvvgg01vpNkPux96YbpKEMBXnDTgzDGJ3X2tz4YpTlaEEZithJvwULOZ&#43;Jd15loi5OZS5l8uDOAU5Nxs1qDq82XzP33atU9&#43;qnLlpwZsv/UkZ82HRsjGmGhvMMVC0RY0sbaAJkeCXCmZlAIpAVJEpIikYpAiYhmCZBEeF31hg9bQxIK9Zlzv3WUfHr79zB&#43;cUPjLosuHr/jlOcddw6gcRJEWY06nxcJ0lZybzZoJR5565F/nDrx1ZnLDeYX2otYqoRRrCI7oFnEIDtl4SYee2W7wXw&#43;0fexXa/Lf5xQkZQ5I8nhbsg&#43;ETmyIjHU/z5A6WkP9WbO8z5A6Byr5oUDzE4adP4JkP4qXnafhjlha89jtSohroY0mUDsANDY2CiAt8EY1wtEdeAvbHCg1VVUCAIoILvYS3ab0LOt9ZmlVEwCQyWQYAIWBeQxQi1l450mv/LxAa2JLN6Otrf3dAjMAiGpUWyAlTxhgzozZFg6kQ54NYeFEG4jAEFg8VJ/7x2601NoL/zWqkU5HTzplYX70qbMueWlC/fOpfpsys3pvLBP&#43;HlMsWhNqw0a4UggpZJSBjKj6z8BS1BqGKVozpBVgikI9BAEBTYIgIFhaYlkMiP1cYBJ2j53Rb/vALxy19/vLPjHohV&#43;eNXYeMGAQZTJ2VqZWnzTh1KN&#43;fk4xe3LZ6hFhSzGUgAITBFtYYRFIANY1sbgnn95UDL7&#43;0N7P/KNh718WVkFR9vAYYySlDIO2MJEITnh20f23PLfowV8AZpsOw3CYaf75s4vu/9OR5vmT/Hxjs4TxUqmUNKq9GcxKGOmU&#43;GsAZCw6lwh1us/RS8Z2bJNKpd5SFLO2ttZUVUFZE7s89AFFfFnp93a/LQ0sX7bgiSWP3/0dNsEGttZ4wnxnac0Df6&#43;urg7eTXeuokzGfu706ROGiIZTjR&#43;CoCSXPHoWRcRcTS/udPDwS/nfEWDnZiH/Ba5DRGRHjz7qyJ&#43;c1ut/qiu2nl2utyPIF3WImFQkZbSqExgMywCDuCPHXoCZSkt/R78ZpijnghkU5WwKErQ/JztK4xTSgGAKlkm0mhP6tVWe0Lt3elKfnlc9srPnDVuK7vqvHrfnJ0dTQ2&#43;/3RjjSEeVqsijhwXQLE0i4cqH1/rbvnp/86UvG1PzpZEjvVm1&#43;43Pf1U6PBUCxujQ/&#43;Xixx7bOWnSJGdsjx7u&#43;pAcAGqnU9ErlUptvy2bLZ40Y9T3pZDxbPZ&#43;M7V6jigRwlwmk7FTZ50&#43;QirHblu/Zs&#43;GDRtaDjLmLABMn336OIelE4Yt27PZbOM/O7&#43;SbWGYTz/DhXT9sLBVKvf46bPOm7R44X11B/D2dFpU1dQkfIIDsBSuqkilUrK&#43;vv5d90PTqaMK0wYlAxW0CU3EKgJMCGmUgYzJVdv042uCwoPMEERvTzszQJOJ1KlTZhzxjePyj53S87VBum2PKbJHrq1Qggy0ACxCdgDjkgSkkJBMkfIlwB60ShIBHDUqiAoNLWC0DY1iAw0LEm4EdBgBKAoopJiyBWZFO&#43;1JfUX5cb3j1&#43;7WCQwQrQj9wIZOUsZNC5gkNMXAMHC0MbGEK&#43;97Jdz&#43;xXt3X7iNzLJ0FVTmMIC5swfgqSf/cVtJi4m6urrwqKoqCYpHgRtjTWk7&#43;fRTT/ykqqpKAQBZstZaWGDCibNOv49InQnjOP2OOGpjRa8BZ618dnF9CZB6SlXVEY7sNR8wFXkT7HTdyuOmzTjtf5c89dg1HS71N3ng2ArxdejcDYa5fyzR5&#43;uFtvxlAOoO4O2ZjEVV1b4QKlu22WzWvNWV4DACumdZmYldSLoIwdjX&#43;kVYC3Icbs8RFq3P3wmA51V3NBh465RGEOyECZclv3n8uvtn99g9SLe0h0Qxx5KDoixYRcLGBAsoVwBCtQTApmaDppxt292udlul167bWvR9qzoyKMzwPokXGvb6g2Jx2ad7EkN6xpwRwypV&#43;bAKIOYCMB7CoKh9gozZkCzFoCwBgslCyoJP7CDP/ShPRS0hlBSuzUOjGySKABfhAprKY&#43;qPy4prrnpiz2eaSS&#43;7guFkahG&#43;EwZ7Z565scMQ5ddvU11dbWtra8FgMtZAAh9ypHNNoeCnAXtNsqLPR7TQXwLwOQA499yp5c35ilptDAXSObZu0X0tJ1WffUNZWa9vnHTSnNVPP/3onzuAf7AbLpPJmOnTTx5uYY/zpXe&#43;Y9rHmND/OoQ4v6qq6lu1tbW5t8PH3xVAHz9seP9yFZxoTQGGYkKUgm1kFFM8kBt2um2PrBO1BABvMzeB56eI5mbxs5M3z6yONx&#43;lWxqCUCQUCWMSVgrEEkJbR7zalMeLu/3tW/biHyu3mnXPbRVPrSn6G4B8G4DcWzhU/2N69Rp9yfSKniMlLhtaIU8/po/nOjaHgq4witsliMAltiQJZCDJlFx6EXAkSDWjYMtRzlYj4ahfLhYrv1zTcBoRGlMMeTPeETAfDOo33aa&#43;vl4AAAsYRznwdfGG2ice&#43;A0ATJ4x4&#43;tBkExJoYaXeK6eVn3K/3MTyeGFttZpdQvvawEA5fi/KBj7BXjlHwXw59raPq/juDU1NQKAZce9zIIfqat5sAlA09RZF9S6XveqwMhzAPy1qqpK1kbu0PcHoM&#43;fEB8z0m1IGC3AJIkQgiFgZGBd7cnNOSzajJYNJbrxLxlBDTv3dhOjQwiv3FWOAJjwWnOI5RvliyteyT&#43;94FX/H88Ge2sB7O3MKgQB&#43;q8dnD21/2KviZa66vF9WH00ayxjx8qmph0r72uSAO4ZkEgcc21Vv4&#43;fMDR26TEV6G2ta30dQpIRHR2b9rUbI4JgE2Ep8BBzpc6xUr&#43;oCWu&#43;tXjPJ5h591wi&#43;V6XjL2RGAGdSqVkdtw4FjUPM8MINvtXeSY5PQjYCkf&#43;z7SqOUzksgngwFOOoaBftNU4PpQxmE6nxSOLVn6MwLnpM8/8DcsQkEFfSwmw5k8AuLOTcfj&#43;AHS5G5xcqYowARkFIztyahx2GWzx2h7zHACqqX77ZUU0N8sA6DsPNj69eZpaeWLPWB/msLByIzf9dS1uWrZn2586tpUiAu&#43;8X4Pqa8FZhjUM0NwOIGXflNqkAGobOVI9/P1jQXOzKz/78IaVHvr86tvT8OuPTfROH1qpUSywESDZeTWXrMGQKMJFuZPXOavVNx4qLLnppZaPCoFdRCSA93ELMAZ1cHE7YzIJFrC0/3TZekZKIaTV9zCJrVZE3U0Et7c7tthcIsB8CP&#43;4ffLJJacKURaTjNtZUNLAYdjgPuu3fs4RYub06SePXrx4wSvvp6COGtlNjxKCYaNuFCU/A0FITc2&#43;xNNb7WYAXPOv7d8CoPWtW9dd/TBOBBBD1H8j2AfiC1JybjaLrIXdD963f5wsAKxbZ2juuqixelWVmFVbu&#43;HaJTjjpV2Dz75sWu&#43;fnDawbYwtFHWRpVKilALBEkV2udzJ211&#43;mZq3oPDQb19quZCZfSKS7z6Y08J1l0q/xGgdR4kSnz3QDRc5fsBR/SIBgKMc0aGXOwIeACCkZNZ62dM1jy95E7qzTzZs2CAAGCvlVQqFu56qffS7nd&#43;fNuusYU6s&#43;0eKRn8cwHdWtLUpAOy6bnTeUTBXltyJ7&#43;rVE32d9oGwGsy8L/mGGSyElLsKsvhwk/skAGRq/&#43;Ub29FY3BeEFikQMDOlAWEsQNmsKS3nh81XmQHsrMjIIZ6fknes2/zgnNu2nXHL2uR9ea9SJWLGCGgNhoaALk&#43;G9OpeT37&#43;78Wf/HZN48eloGKpevs90DoZ&#43;/jjj&#43;dANiRAu82muQRMPkBRCM4DbCC4tfQe59SGJrA1AAodYCY4NUIIMlZc2fkok6efNfykqjPuH3n66V4n9x4AUF1dXTixqqq7EbGpyVjixwBw&#43;umne6eXtnWYbwh0GGiSlwPw1j3yiA8gOm/mAGAtYHdnMhk7bty4dzWlmJZecUx4QrddKrR5kI0DZGEYHHcFLdmq8tNvbx5GlGvgf787EL2RRnjHdV4V1PcWQVtG7NtVY&#43;ddMDq4&#43;ujuRShl0aYlnt2C/E9r9t788M4z/kuJrNH2vanajlxy3Y7JW3OO48WuVTIGG7T/1iV9Rz6/e/myZcsKqVRK7toVjmbB31Vl3S/K5VoWxEz75zgu27UvLo653X9SLIa7pPAvOLnquKdraja6RbH7KSfRfbIttN3iWvMn63APa&#43;XPikFw9/J&#43;5VcjO447aEcqlXIa9uSnhgY/kF7yxGJu73eUMP94etGClQAwY8apQ1XCObaovbuVKkMx1/B4zMU3FcMPDE&#43;CSt4mVRKh2fuHOIe35fMty5ctW1Z413I5eipfcalhuKUO1DIgCHvbCz6Qi5oG/fsQfM&#43;S/0slYSJ14hF0fe3ab95RG3voo1P6nTShT4GfeLk9&#43;YdXcSfQvoHTWabMewJmAsDxeFzminyFku5Are18HebYIR6sGZ8zJvklAIVsNmtmzDr3QyDPy7Xlb/dcJ2mITpMBvaZcryrvB7cL4cQtBR&#43;vqal5pra21j/&#43;&#43;KpzNPBNAbowFDTNapaOwz9Y/tQjN&#43;OgLLqGBrhW2E9CqsZQF&#43;90XW&#43;G4KAcwIooEmdngcXZZMRfTRgg5iTL2OZSmmxOKO/4wNL8sBiwkOin2Xze87wvlWjmuxL&#43;puLXjmBmC2VDaEkQUatlG49J8fQmvDD1jp3HdKqC/sBLR2uGAy5CqRmk/T9Wn/1Bz9A7pIYW7MNCgMV&#43;VxZx6S/&#43;zytapkzGpgD5&#43;aoqQnUtamqi2j9&#43;nyTJd0TWOkfh&#43;vTpw52Bd3DucbZEGTpyqhsaGuigz1AqlRKd9/FmYE6lUrJjHw0NDVRdXW0z&#43;5WASKVS1Pkcq6urLQDU19fTm533u3J/i1f15YOVr7VsYwkhlr7mrJp259aJ/0kaukv&#43;c&#43;SQfTkUvbFiEugawdAlHywRWwtlkISo/9UBw3gAZq4A4HZdpi75wAB6Z9jNSACCD7CSCNZyLC4Hl6N8SEcnoa7L9cEz&#43;qqqqlRVVZVCOt1x/6jjd&#43;n020v2PxxSVVWl3skMPLUnKBYhkaQAUbYGojlRYOg&#43;Seuc2JNnP74br6IKAl2NU95Vw7BU0b3P2Bs3bhyXKkTekj1zgEFWu6&#43;LE3dk1tXWvvudnQ7O6jvsgC4yPWNdNdsYbSWTBCILMLAWvWOMkwYL9/HdoGoAmS6sveNGOsDIZsm8ITDfgnSEvadXzfocnOQUsGwnW8w9tfDRb848YeZYmex&#43;tc&#43;ixbI/QFhz09JFjy08rC68KNlf1B5YlEwA6IRpp5znKNm6uPbRBfvJ7WEEdKPffRVMYbbkIjr3nWFr4XmEoUO9IVgBrq5GV6u2dxzMYIAwbeac88lxLwtY92bioiQpmfStKsBQV/C9Cxc&#43;9kLnXI03QJUwdunLDHFyLNbt8iDPywAgrPB2C8NrLdvrYsmebphreQTAwsNaZJvJ2NpObtCOh2XK1NnVblnPu63ROHn6ySMWLF6wIapxzBy2lV&#43;s2tmyqrnowWVLhjrRZCskKEClil0MoIe8Dhrvs2Tu/ywwpymdSrnTqs&#43;9Q8V73G01nMD3v1f07ddh7VLF8VtFskfaZ28oEPl8O4O3Mx&#43;OgJ7B0089/mTzliWf8Iut2liZA4Cnp05tqnnygR8xwmsMkymymz/k&#43;aTfQkFtOi1wIA8XADBj9pzjZp95zuUzZszofwDYHLWlqP1dQWg25Vvz7f/qtUrvP7fXA/re&#43;m0rVuUdC8cV&#43;z14DENxgrZ2QiX6zygvP9IyKNVlGL5TnFkAGftYY8uNXnnlRTk//6ultQ&#43;cuXLJkw&#43;/uPixumVPPnyN8u13yQobQrQfzLWBTEfgg0slWtRBPQYNGlNOYFXKHMSQmho3lUpJIakIYSSET4fg74zM/oLadPpA8Ow7biZj0ZE4lU6LqBKcyRjn40L2uJVF94kA7wu2LKt9bJ3du2VMz3hxzNOrnm4onTu/QTU6Hfy7jnPL7D&#43;3fQ/RPkBvb2xZ2&#43;6rFVASjI4J8QKCQoQadlAPifOmVE4DwPNTXeB7JwzAbDZrjp8xYya55Z8ttrc3dpM0rwQQ1eEVCA1uDINiKEgkAWDDhsp9kb&#43;Zp5w39oRpp08//fTTvZLRxR2aOgwd2zni68TjnM1mDVsrlVWl2v79IOrY54zZZx83a865Y/Zr/BKw0ul9xz3p1LOOmnrKuZMBuNhHf4gF2WYTBpqsaQWIOxuCZWV1ufb2bQlgX7E1d65G73QufNDvRDabNZMmTXJmzPrQ1GOmzB6HKE5iQ2P2gVoB8HMBZ5ncSQqFaMgrAIcD&#43;PBEQhgc21deDsTvvLyhTxOw6XCOXeuSjrvF8UuUSsAvti9dsPC&#43;5lQPh7IlIKRSKbl06f1tJ0479XEpyAGAurqbw2kzTzsV0v2pMTYuHSfXVjS9ps8&#43;7WZp/O9HZVVvUhRBdMA9jPp6QM&#43;oPuMjluV1hrmdtfGmnXKukdb/4qInH30qlUrJbCZjpledfAop7yeB5gohuHFK9Vk9i37uCz1cZ0VV1dmPhNbpX/RZaeX&#43;YdppHy7osPgA8sX7vXj57zU7vSHDVuDFo6ZNmzXRceI3h0hoJmLX5jbV1P7jkumzZ48T8H5tbdwj69tCvuXjy5cv3jB19tmfZaZrANuYSJT3m336hduPOGLExY6U&#43;7L5BAAsKAy/fUO&#43;d5tDRkaJ0QahcOEiFPB9fVw/Ne7Skd3O&#43;WPtJj9dha6u9IdRsqV8YSHdUWwlBNEyALazkVbSiATTNtfP734YAI45ZuaZMtb9UYLTlGveM3VpzQPHhAY3evHemVzg/gZ4ex6L&#43;vr64ISqOdUqVvFXY/mJpQsfmuy3FqvAXo&#43;Qyv4&#43;acac/tls1s6cOfMk4SUfs3C3te3KTejmtF7guu4I4VX872uNBdbsXG2FrREewKA/QHpXsxO7Z8eO9RtC3/6Mpepn2S1PpVJULLbWW2v/2wh7YihpmpDeTwFg5&#43;bN60Mt/szSTjaQ32UubJk&#43;&#43;6yPOrGK3wSGb3tq4QOThaTZBs6xse59b0cYegBgrSHBnBa/v/febS82hC8jEYMhsspKEEetXnzL1C3WzrOOLPskAWpedbrLF/0OiCQyRBaQ3PYGm/CyZcsKdXV1BQDwunf7LyZBHOS/tHLl4kYgLZ596h//k8u3r/XKKj91yilnjgUAx3He3O5hsS8nzbD4SVGHu5c99dAXAPBzzy3YbXTuF04sUSmEOwcAByrxSw2XuKVwVX19bbv1vZ4OCJ6QCbdfmb9k0b2PCxG&#43;JCUg2X9qycN/ffzZx&#43;59YfPmzc1PP/3gn2HzO6w0Yn42a&#43;uWL9eLFj3yAHPxN3HXtaE1YwFg3bp1vpA0wpribUsX3b9weKFAzPTTsBisrlv04LUAsHjBfa&#43;w8f&#43;UiJdNufuhx2dHnrlQqOzcegIgH3w5f8&#43;swd7kGBURohyOzUVzf4kk/MCcNkpPOmXEmDPEdZn756cg52a78jwOp1jLipg70g3ewLNQpVKpPrx169aeEOJEP8g3tTRt3AyAJk16UNbVgYntc0o5Y4t5Ox7A2jAMxZutqVwq5Zo&#43;fXovLdyxbFSuuvqsWy2sskJaAxpOMJDE3hWTJjkvwjlKh&#43;GOPuxsAUC&#43;9deAYykJs2vpI4&#43;0plIpua0xH2MWMKzKU6mUXLMGsr4&#43;G14xaZJazST3dYuneYR0mpxFy29l7X8hZHwVwO2nn366t8fXF2uSFyKdFjsWPH00CXeA1YJnVJ96G1khrJAWxNNJMHbv3jM62p8kMTebtYIQ/mF5xY0vNFZu9MgILfLWiP2tGguW6Iikz58&#43;Vv&#43;QGZW9x1VRlwvvMBmFJfcbA1ujG62PewMbhYBanc1mjZSJ7kQiDrK7X3n55bbO27PFdguw5rencFzXFQRyQNgjhDPfWHkHDN1J2rlWaTmVfP/eVZV9jpQi4RJj9w7sCIEo8lf7&#43;P13LX3yoafGpVJuRI&#43;ichAhomYzvXs3WADcv67OdIofAcjYVH09LV74UF3gt9fKRHLSlBmpYcVieLZgu/n5hQ&#43;9gEzGakmVpKQFzC5me6eBuAOMO&#43;NOxadsyCfNmHnSPZFZII0CwN&#43;dWaUytbX5BTsm//yEPj1/7hTzBtHchYhokxRhoWjOG&#43;GN/eSEAelZmdorOwZydkHy35MOrswSD8P6lwpBp0w5dcaw2sdrX5s0aZJTV1dnxo1Lqfr6bHBC9aknCKgLYm0N1&#43;fcZIGIe86sqiorNXwpKSkzDGRIlmJkjnaEEYCFRjqdFs888wzWAaSsFWADFlFbqoRJmJywhpCvePLJBx8&#43;1LlOnz6djfLyYIyKx&#43;NlqVSqtZQ3LbLZbFCfzQalhxOCAclMqVRKtrW1SQC6BlWCyUJZIDs3JYCs6SjIlYTfCBJVUPrawDijY8K7DoiGT1nR3sg2IQgWi2sXPLLPABQEaxljR40YUTIIOeogWVtrOJ0W1z20/NYlDYnNrlNUIaTtqMxRbKFZCheh&#43;czxySsm9uxbfcpTtTqd7vJL/7sShYfTwhvc856gWHhWOZXdUSi/MfJk1IUAbH19BBSC&#43;L0xofdEXV2L1fyc51T08q03DgDX1S3XAFjAm2j8AMrFcwCgytVeBhnNMJlMxpaXlzMAdthpk1YYaakVAG9o3NBqjHnBiXXvP71qzkWdz/GE6ad&#43;ecq0Wf&#43;1ePHiRmb/lVgs4ebDsouy2aypra3V2Ww2mDp7zjemzZpzfkRjSER9a6mYzWbNI1ERLWpRqxkitCI0c0uuv7q6Og2Ako5&#43;UBfaNniO83EWwtTU/P3xjmBRD2/XS0FoXyU3dtzESVNP60TTMHjEkVfc8se/fBmANdbKzuxK1m7aVEjKhDlhaPczym2LMaQEgcEkoEiTDoDBPYxruPyCh9bt&#43;cvip9BSKp7tkn9D0ulquu3GG8ORQ0cts8xnxeKVUwYNGnLqwKFDd/UdNKR8&#43;IixJw0fPvZvDLF7We0jHwXSonfvV192vNhlEO7xwwcP&#43;UevXj8vDBl9wo&#43;9RNm5hfbmeU8vfPSBE088MV4MvbPIS861TH2HDRm2FLa4tf/w4QMM6Evkdhvvo9DYb1C/51YtX97Wb&#43;Cglx2lPmLJmztk6PjGAUMHJ4eMHPthkuL7YaD/uGPra2uHjhy1DYIvVtI9a&#43;CAkcHYkUeK3sOO/DqEuIJM&#43;IstmzbsHDJs9GnKS04PtD/wiFEjc0MGj5h2xmmzV2uUn&#43;TEkl8g1&#43;0xfNjotUdXjnztlR0XmaoqyCeffNIfOnREdy9eMdv38/O2bXp1BQA5ZcoUuv/&#43;xeGIYaN3SSeeEipx2oghQ/YOGja0/MijTrio4IdXzr3wQ0&#43;PGD7sOLa83&#43;Neu2mT5fkpefaNS5cfPXjYjGN6hyM4zBkgLohKzEJI0prN8YNlrF/3Hnjw5ebHfpo6MfZY/dYu6vHvaWlOp9Pittv&#43;d9eQIwb/TTMnjbUnk6CLBKkUEZ0CFn8b0Dv2yajPRTXt3P7HzX0GHrFAkaiyRFe4sYoLIGhC0W//9vLFj94AAMNGj5/gum461LxZEHYTB9VtQdMjkuL/BSGPKoThOk/QMEfbcPOmDc/t2PLa5iGDj1hs4Yy1ZC8nwkdg7SAtgo8sX7TgsVQqJR958O8vDxgy4HlBcoAU8mJj&#43;CMMbg7dirOeXXDfOgA0bPDIndaYKUbIY8maOdB2Q0P7llWOjN9MULuMxSZJdnoBrSu2bLlty9ChQ8WmTZt46ODR240OR1k3/oOt6&#43;sLmzZt4vr6egtAbNr4yupefQdulI4z1hIus8BH2HL3rVtbPvSbX16vAVwghDAHRa0gBQEn9e5xYd3njtb89QFh69f6cO5rR7B/VR8OrurN&#43;av6c/C1frr160P5C5OGXg8Ay6&#43;Y5HTB8rDo6n0Ubty4cWVTppxeccopqW6vNw4P3Pa001I9qs5M9Xv9Nm97qdi3z1MvPTU59dz/V/769zptc&#43;qpyXHjqsoOOm7HsdWJJ57WA4eYhfmvxp46fphw6aXJMVPPLe84UBAEX&#43;BIXt97MF1q13rViaN/0v6tkcxf7RUUr&#43;rF/lV9uHhVX9Zf7cH5K/vZ8Bv99aavjuFPTT4yDURTtLo8H4dF6FAJ8J1zNPZjbF9S0sHbHfQAvC5XIuolH/1OHLzPUu/TfZ8/dC7H/m1K74tDgW//9m94Lgee65sUHZT2s&#43;&#43;91atXu4jG8H22A9CH3CnPTwmamxW/uWDSA58d2zAnyBW0BBSThUYcRAZkC&#43;y6jt3m95Y/eM751q&#43;XrPqBEgRt&#43;T1p0vKfCOyDXcZvYVt&#43;B47/7xz3nTivfftlZvlGY90O1NKA2FhV5d5W&#43;1zlI5cNqpkzuG10vo2McSDjoQELCwZgmDjusN0RlMu7tvX&#43;xpezy24UhOC7M6Hez/O&#43;GaC5HVUg2Sy/10MyOZ0WQI2oAVD9JtvVlF6r3&#43;Dnwy/Vb2mrw3X8mrd5DpdXD1WfuOm5kOenPv2mgAaAkSNHeuvXr/OnDBo86VdzvMWTezd4rYU4x0iIqE1yNB5YWwHPNToUFeq3z6tlVz629TNAblXHqLj3m9YrrT4HGA/MoHkE6pr&#43;&#43;sFbwjjS1J8B8Ns3BTQAdIS4Tx414orrTpG/m9ptL7f7QByGGIAlASMZrD3E0KZFWaV6ZFP5a7c8j09kV6&#43;uFQSUgjbv9RxwSldVyetqazUDwHx25/7itOMpyIm1rWLXqpcWv9IB7Hez/0ip6oQf&#43;t5nZ/G2V89tyRfFUUO6b7DMJDplw9kSKfVVHICB0BJWFCAAOKGALxW0kIim70b0VcLCQEALARUWICGQRwUkbNS1XfpwjA/flgElFWVLnxUWCIQHQCHvaHg&#43;YGEQCglrBWAFfCVhoQDrIEQUtWgXGhYuAAmNEKEVsEIihIKw0f41HISwiP734EPAh4AFYI0T5YM6PhAqWOugYOMwAtAW8OEghICFgraCnfLucuO6V7dv/POne8RiiV8DVv9TIy5dVaUytbX6lOHDL/75qfz78b3avFzOAykrlI0mqzJZWAgI1sbxHFnf1hOLN4lffubBHb8Eml6VBOhr04Iyh2Xy7NuS&#43;amUvOiuu4xhBvD18r9ctPL62UN3n2WK4XAijdbQ0c80hE99qTb8Yr&#43;dWP/91LF67v45hu8s1SiNo37si9X3nzpw5zm23Y/qlDt3lOjwG9iOYaMMWBfWodI1V9AgQBdh0TE7DCAmECQCGBiKwSgFa0JIa2DhIHC8aDiTVTBCISCCpSjWxlbBmCIYCpoULLnICwErHFh2oBkIjYG1CixcaOnABxASwbCLIBQIhQGLOAJSyDOBrYCBiwJi0CBoJmjEYYQDLQkBR8AP4KBgBQJ2oKUDZgcFUgiFg9AqFOEigEJgBUxZXzQ/X9uw7nvjfjZszPgfaqPNW/JK/G7SJOczdXXhucN7ffSbs3vdcVLvRtrrKxsjV0gugDuebCZoynOMXMDtQYsbYjvvW42f//SZF38BoCAIWHBtlapBrc1k3tHlneanUiI1fxwTZSwQG/Stc6fN&#43;uioPVcdFW&#43;fSH4zoI2FtNCCSDmVtKihfN0nnms/c8PKDa92PMTvOKCjAaZ2/seOWZAatH1mUAgMoGQHmgUDVhCYLbSKQ5d1A0HB5gqIFVsQqjjARbAS8ON9wZbBQpS0ugSYYQmwBQMVtIHjEvnEIKhiO5Dfi7wog7JFGOEgJAEGgVihgCSQ9BB6cYgcIRfshSYBCxfMCkVJcGPdYaUH34TIt&#43;WhHQERuLDSge3WEyY0yLUVYJUHkSiHlk50HEhoKxEywZCDtqJBW2BhyIEPghUOymI9ECqLBl8jn1coqHL4woNmigDNDkJI1sneVKxfsW7DdcP&#43;2AHot&#43;Qj/ExdXVjK3fhrm0nSdWf0vnV6j12en4e2ghSTgLQMJgPJFVSABfnNenov9DumqtsPTz968iX3rAlv/83T8V/MytQWOpb3mnlVsgTuf1tzM0DZTiCem80aEHDV2ceffGy38IYzBjcc3RNNCNsDA0iyQgkyBG3BXGw2M3uGI&#43;85KfnMd/K9/jtTW/uz9KRJiUxdXf4dRfS8aI7JmEG914AaZoMMLDkqmpUbNY&#43;0UkIX2oHJcxA///uQVqCtvhZtf/oSkhIIij54zCmo&#43;OQfoHQ72KpoQpiQEb1wytBw5/dQWHgzus39MXpPvgSta59B4x&#43;&#43;AFda&#43;NIFk4IBwQgHMvDh9KzAqC/eCNfrgSC/G0tu&#43;jZU8w5oB7DGwFXdUP25b8HteQRsPof7f38j/M3rkBOMZJ9&#43;uPjKa9C0qwH/&#43;7Mfo2evSlxx5VUQyoFlC22jJCGCgFQC9z6xGLff/wwSFR5aW0PMmDwSX7l4JggWz728CV/9/QooR0DZHNopAQkNSQRrLYM1AeYAF&#43;dbdnrPqq3VJc115xfuHdD&#43;49N63ThnWH5Y2K6NMSytBBgOBDQULBhCFQLLcbHXntLbP/qE6YkffvY487EnN0984KFt9u9ELy4DIi1IBFibFsjW07xfN9D4Pn14TeR9QBpR&#43;4TSK0fcEzS&#43;PkW9GxoI1UD1vFpDBEYJxOg7cegPTz3ixOm98x8fIvaccYTXAlNotUUoCPIkyESsjQCXiawjZaFYtBO7FyuvP7nnT3u7la9l6uruLVGCd45&#43;zKu2yNRi/Y6W0RMGEKJxjmYfZTAimkamnRgSx3wIItYXAkBs3Mlo6zME5bs3IxQxSGbkAgvHF3CTcUi3HL4OgfYmBKxRhIIQDCfeC44bB5V1g2UFSxbCimhmAwGKgYLW6DduGrzugyG0RXnPMlSMOhbNi7dCeAJsLQADlayE48Qhu8Ux5Yxz8PjNP4e0DAGG48bhJsrARLDMyOXzYCgoJVFenkRoNNr2tsFxHegwAMMFIxrRN23iMJS5LgwHOGH0EIzqtRormxkxV8KCEAW3RbRver3L&#43;m1FcTL7Qf3A6X8eWf&#43;Hc&#43;lPHxkXn5o0RfaDIoT0CKWRFgAgSZJmyLBQsElq4Qnl8fETjo6NP2eI942tkyc&#43;u7rQ/Z6XW&#43;RDv7x/WTNRZschj3nQKwBEGr1UXlQbvTly4NFH/L&#43;p3aeN7eWd0QdNqaO7rUuUizagWLSFvAMhnNKEr9LI5w6DixjEClJA5ArWTkg24esze97Tt&#43;fRX6W52Z&#43;XaAHeSU5dDEzy4PWGSQJkIYo58KCjQCOrkWvejjDfhu4Dx8AdMRXh9nWIlcWgNzyD3T86E6p1L7pd9t/oPvHDaHv1aTTcdhXiLkAhQXhlYN3BwfXrPAVRSmcA9jz0OGYmlGFseWkFBo0/FoOOOhG7lj2KWKlJOAsNtiEEM4yxGDZ2EgYfNxWvLFmA8mhGF6wxiJFCbnczfv2Tn2FvMcTRx0zAxy69BE17duPHN/4eoUnAtwKJhINWX6F//wocP34Q9ra1YWvTXhw1bBBmTRyA5x7fBRXvDjL//Ba87bBkprZWp1KQd9&#43;1bv0n78e0VU0jfn7FMWVfGdeNYPyiCdkRgqg0MMtGS6fwRAgX8AvWCmFHeAU1omzPidNU&#43;4nbcvjBhz45OLdHi2X5gnxmZ5t6bVOL2PjCbtq&#43;9OWd7YgzoVAofZOT9wDzix87e&#43;6godg1sFzkjzuqnzOwuxNOj1Hu2KHlTWWVMgf4ORifrA/JLJQU0oB4XycsEAtw5KeBKN1OhkCMpGizisd222WuOmHADWTG9CPKfLPk/XjHGnYfarqYBUEQIzAMNXIalFuBcNUiBOtqoD76E6hjLoD/zH2Isw&#43;LGPq0b4Iu5uDpAEQECYuyYjuSQQgjFHzqaJf8BqnsRNBhiPL&#43;4xAbejSCtj3YtPguDBgxAn1HT0Z5vyNQbNgGKBdsHUjpoa1tDxq3b8GII4/B5Dnn45VVy2FNaaJY6TAWQKg1wjCENaZ0bgJBoJAr3RNSBjbv44TRvZF0XSx5ZQMWP78BRw0bhOkTBuPmRZtQsBZvpenAvxRnz0bVKoI5DaLMlWuahj9w&#43;bjY/NQYp0cMBRQDMgJCQBiSRsKqIsgSmDzhWCMCgE3gWOXvxWABOaS3qoCUp8E6p/nWwx6j0JQ31q9KBAQQUZIBoDK&#43;ujHmHpVvD&#43;SQCmVjvZwipAgAGwDGIPDJBmzYQghBQkjm0mwdGU0lKN1QIzSEZUvwWItASiYoq6GFggdBhYIneru79FdOHHi1VuMHEa35rCS0GX73hrADBBVqhDEPzoRToQEEq56A88qj0Bd&#43;B2WjjkfDgHHwti&#43;FchWMFPAdF07Hg0sSLA2YRKce/fYQjnmAIAByYYMCKsZOgiPi2PTaEuxd/hj2TD8DfY&#43;aiV6jpmLj9j9BujE4lkFguG4Mzz3xd/TvPwC9&#43;w7AhJlzsG7lc9EDyYSwpK2lEFAsgKiTAggCJAQ8GyKACwuCJ4FjjhoCwKJu7S7c99wufOrDBYwe3B9j&#43;5VhyXYDxytNeWYLvEEZzr&#43;Tz2yJMpbTafHEKxsWXHrfa0f/rL77l1/cm2yNJZR0lCEfMHkRZ8dEnlECR24lIlIwkknKgBUXfWY/HxpTaNNe0Kj78C57dHK3mNytOTape7N3XLfm2HHdmmPD3KZB/dEwZpTcHuttdjKKe3WYL2i/aEwxJI6iPVIKIgIiC59L/3WIscyKhHFdTziullIQAnYRCg/KRkuylExFP6762m0mXZ2/&#43;IYzxs43jBjPT4l3o2klg&#43;AgRNEweOgk8NBpQFgEV3SDM2gYwt3bIZQLd8w0cBCAIMCsSnPQef9emKO&#43;9VBvmDqhSUILgjRtkMkkKifOBpihA42eY49CoZgHmNF7wvGQohuU1tCSADaQXhzFbVvw4sIHwQCOnzYH5X0HwxoDIUqjTVCaZ8KvI1UAWxABoW9xRN9yjBs&#43;CNaE8CRj9Kg&#43;2Ny0F54gzJp4BLQuIpqw9&#43;b65N&#43;&#43;OZTJ2HQaQhC2X/PAql9edFtw1F2vVfxyXaE8LFdSxp1WMuwayweOabHoeFqZBIGISBrhqIAcZZiFb8BFLbkYin1//FBYPxQ2sII1JBlSikkoIpKdBhAcEiDGEhPYxBNEPkv5p2Xhop89492yV/dEmWi3RSi2IkpDISZYRyMHTyabW/SVx7Wc/vsLRv6R5j7tfo9g35VOrCQRsg8x7hRIlYBQMQy4MIPyL/wDXt9xkYaceBrak70gWHdKn&#43;FDpE9wyWrgTqSDQSVK6MACgY/E4HHwBo&#43;HJsaoKadj2tduw9DJp4MJ6DNsDGJDx8OEeSgbJVeyZcTiHtY8tRB7dmxFWc8eOPG082Dt67okvOEqJIihfYspx41GhetCSA&#43;fOb8at335LBw7rD8YwOyJA9Av6SM0/zz77bDcmEwG1jJofiol1xS3b0ndsfbLX1jU77g/r&#43;15zyutPY2TgIx5lmRUaW5DFkz8&#43;uAh77v0CgQiSYYk2X1/BFkhyAoWojST/CAHBCtIhCAKSiFRgrbSOhToeNySUnFZu0E2/KCmcPlltY1zvlaz5ZM/WlF&#43;6av&#43;EaLCCSlkttISmAwcI&#43;HAoCAdpQu&#43;/uSY4kce/H/9/255QvJ7BDv/HWwJSwAMA45TDjF2JgSAlh3r0L5qAdrXLkL7uueAsIDY4LHgQZPBQTuIFJSVABGYGZrU/oHhTLCitFQzw7eMkCw0FDQ5AAh5S6gYOwUuSxRbmrGl/lnsWvs8trxUh1zrTkjpoff4oxBoE620QDRBTjrQ&#43;XaseuTvMJYxcPBgKCVgjd1Xw8cgMEX3iplLw2wYYAFtXXge4/jxQ8HM2Lx9C5ategXPrlmHZ9dthB&#43;EGNSrEkcN6oGczkHAecsc&#43;t/lhzw3mzVpQMxLp0GZzOrHV&#43;GC4/oPmnHZhOSlx/bWFx/Xq1CWLBOACYAApkiKmZnAEAKgA5/qN45BEx86JmNkAGscCAMLBeuRFXC1CK0rnlxvin9/OXffr14Ivwu0rpMC0N&#43;tUpSpvX3b3jG9fjij/MdDE81um68sS08kTQBDUQhZw1GmwPqs/ltPfeyTvf9x2h&#43;Gp&#43;Zmsw2Hq/qdDr7uQoLyeyGOPguxgVNgOcTuu7&#43;NyrVPwFMeiioG9&#43;p7Ees7Ee4xM1F8tRaSXBDthHAEiAguCH6n6eHSuIAbA4hQOewodPvOfBC5gONh19L70PzE31B53CwQEbY&#43;/XdsuucX6J6sRHO&#43;DaMvuQYjZ16AfkfPwKuP3gtGEUo5EMoBG4tYUuKVlYsx7KSpGHrksdHxpOgEKAZYQUCBiBDNB5UQJFD0QwwZ2gejBvUHAbj5rsV4YvUumPJKWN/Drf81CxOG9sU5x/TDQy/tgIkHcHwHAR3a8STSaQhmJinAh6OcKgNYymRsOjIaxfM7tjz1lUfXf2bmX9qO/Obynh/77TO0esn2suZGVMqYq1Q8LmTcBXmSWRFrYquZ2VjL1lhmG41IZuYSFYsecDbMbJmttbDWshVg7RHrmMtwyzzhua7aVBDir6vjL3/zPv7RqfNbj/nVC7svImpdd8UkOMaCKFOrF6ar1N9WvnzjV56Uly1t6t1WXpYTwg&#43;tlqUhpBBQrCEQqmLemlP7Ns186JPJlZP6DUzNzcLwYdDUhkl1nq5GYGhyURh1PNpbG7Bz/XLEdr2IbgkJkSR4ejfyK55AS8sO&#43;H2Og3Z6Q9nd0KIb/D0taG9pREtuV1Qxyh0Gj0WhZRea9zYh396EMNEPvtsD2u2BFtkDsUFjoUUFdjdvQ9Mra9A9XgadiCORENj90iK07tkO6cTg9R2IghXY27QTuxt3lFZVBUXAkn/chYZdO9HcvAd7GpsOWHkdAEGhgObmPWhq2gNmAQiGsHlMHDkALc3NWLdlM&#43;r35JHs3h&#43;9nDi0lFj04hbs2tOIMX1iGJnIwYRAKGXnLNLX55V21tCchqDDELnblwsCiHmchhAZy/soXKLvx8bGT501ovuokZVmsiKeMSgZlvVJAq4rSpEuRK&#43;2VITApfIaBkFAgEo55sICQgFaoC0v8OqeArbk7KpXd3pLHltXuO/xxj2LABSJAHvtob9bOjXOzWTrcXS/4Sf/5Gy657S&#43;uZhuN9pKoZTV8JUDaW3JercmliBZs727ySzIzanZvH0Bp1KS/oXeyh25HM99ceotk7tt&#43;HixEGoJyGgImUDOq4BPSTAbVOidkCwBVrBs0ao8hG4SzAo9C81oE4SEMdgbq4AvEgCHKA8LsNYigIQDiwKVo93tDosAJQYALTyQ9aFIIy&#43;6g6wF6RBgCwELHx4KrJDzysFSkBMWwQZoV0n4FINjAmgGLBTyFjAqAQsZjei1EfUJ4ZS8HgqhdAAjUDAuNCkEkCBHILQGRXZRMAn4IsEBWRTggkIF6eQRUBm1UAw5XYlAGrZGcZjsLXJrX1i34bqRtw4bM/aHxhhDJx0//eyrJ7Vd0SfMj1i4s9vN335o&#43;S&#43;ZmaPJwIfVRSXmp0AX3U3G8kEWIuJHnD2sW/8h3Whq/57OsITMT&#43;mlaOCQypiblGGBLVX0SDo9mRkQArvaCyYfmKLnuC0b99iwyTpNDXv85et3m7VPbQhW7ET7Ux3nLgXwxAyoWbUlx/ib5CRTJmOP79379G/O7n77&#43;SNzPdqL1jhWSQd5hEKVXFyADWG9Moee3Zko3rhKXHZH3cvZ310xyfnMzXXh28uDrlKUqdWvfuvMm0YmX/4c2toB4exnf9zp2etQ4ug0bs8agAQMOTCwsCBIS7BkYYlA8OAzQRNBMcNalBKMIg5sSEKzgBEedGlkuIVEQFHOBQBoRElDlsMouxIeDAsYZoRQMCLKkAtZRZwchJAFAiiE5EX5G6zgk4AmBZ8lDCsYSIRwEEChAIUQChoShjz4cFCkGGAJRSgUEIMpbeNDwYcLHwI62RetK5/atvG6I38xZMyYH1ljDC387JT26n6bkwgsiiaB379cccOX7lt1VUl7MA5/jnDU6rUKsrq6CtXzaq0QsIeYVBsrrVQFAN2nuO4JFpDScQrP5PR6wPcB7C2F/oLOe5cEPDGjSt1UW8vZ11mO/zxdFugx9t5Lj/jDecMbTwrbjGYoBQqj5B0QjCCwyXMiXk7rC5756iPOLx5Y&#43;/JVkR5464ognYbIZCbJy6a0XznE3TsLoW7v7rl7jGXpKlHsnpS7TZQZwMIeaMNH/4y8MsJa6H1JpmrfkysQZUFaCMBGP0OIfe/bUtomIGAtoEVpW1hEcQwVPQQQqBzQd0ufgQMarQ2JLbFRCtBR44wALmCiVqB&#43;iQ4YAxh4EUgB&#43;JClrAuFwMjo3wYwMgIyAGi2FNoy3rFzW7&#43;WlpYBRaFghUB&#43;z55xmilmIJmhyKryFssxX0jVr3XX5uft6lu3ALgZgKbcN0ayDJqNEZokuVaouLrppcrfXPn3Fz4vBXC&#43;hcy&#43;8&#43;PdRAqgcVWgEsiNkhFv3uf9OAgiHR3ZSgDCEzNmqhrUArWwGfzrlGl&#43;CvJHL4yurHvFV3emko9&#43;dEzzhLBoQzbGkVAwZABYaOFBhJpjLuM1vxvdvr7v5d99aMltpVD52zj&#43;JAeo8wC0o0velkhEwDygBOvBjx9dPGvATlcXAxRkOSVQNMZNyp&#43;uSN73rUde&#43;yKosI0j7vlezL/eJ52brY8DOPPGTtd/W1KAvFvAWIvePzp14D1fnyKnmyAfhjrmeKxhhNmXr6KZOEGam5wjxA2Lm&#43;/7/pLNHxZRUs5b9hoRAfZvkXFZs6bhfVloXANg/Pg&#43;/Lav5KEizf/kUw1r1hxwDfqMH88HfjYFrKmhGy&#43;pll&#43;5HSHPwxX7AP29M8Z9&#43;ktH6ZvLwr0W0KIoknBEQTuxpLqzPv7iVx/YeWlDuHfVv2r4fFAlBch7BIyx6Pm7c4f&#43;4uMT3Is9vwlhkASk2ZfkFI0nDeE6Qudlpfr1Cn3TNx7b8FVOpzVl3vLskHcxpP6fI4ecJPvdh&#43;tvf3SLu0yWK1GQwsQ5D7ZKmVyzvvjI9qP/ctGghZdMGTuDslmz/IpJzv&#43;VeYVZwHzHQkhBuz9z/8ZPXP0EfrIx11cLp43NPjADki1YOchbqRJ6l/7YePH5jxw95GTKZGwq9ZZ7aXeB&#43;XBxV0HI37A0/1/PNJSjzAVC67KVBpZiKswXzKlHtPS4fiYeuPqUiT&#43;YfHOdzgCW0&#43;n/E6Cel06DLQNA0Ni9f10LyAcpAAfW&#43;xEbOAjhk2P7uT6OTPjDAGBcQ1VXn5J3G9B/vTAll23esOTWFfSlZlMpPUcbbeNgoWGUlPl8wEPQ0O07kwvfvCM14cH&#43;PUcfSZmM/d0Vk5y3oYE&#43;UJIGBM9PScpkrI2NHXLzJbP/9KNj228/JtmQ9I0DBUMdGlrAIpBAEcp4juv&#43;41W98&#43;8v7l7CDEJtbVcV&#43;XtheHXw4&#43;tOGf27b56gr3DyraFP5AhE/kxYZkhpPc&#43;RzzWV7f1jnX/XTcv1l4GtBZ6fkvPmvve9LQ7X9ejc5uArZ0z9yPkj6EczKxqGIN&#43;EAsqgRA6WFETJ7WIIcAxpWZFQD9cXt3/u77vP2hSGK9OA6GqL8O5zaDroRtrbPnL0Xz8&#43;vHVuUAw02CqWXKouZoCN8RySRdkLT7zGz91UL697eNWaB4Eo6vUBBjYtTFfJ2ZmozcHEUccf8/3pdPX4vvTRIbQRphDoUMSUhIYFgdgBRIAiKcShteMk1B0rzWuff2LPBS06vyLF74qrswvQbwLoCNRRaUbyd&#43;eNvetTR7bNsYFvjSWSgsmWkg4NW1aiYJ14D7mxLYHle8t&#43;9fuXev700Wce3RgdJC3mzcsgcxjD5&#43;8YtUhDVKNK7GuIM/Gy7n88asV/n9iXPjYm3lZhi7uttgwjkyIKfUe5gIIZeThc7gYoGJf&#43;9xmz&#43;CtPNVzEzNvmEXU1rHmfAHqfppqVqVXXzxr5y88dj09VmgbbbsrJFbpUKURR2h&#43;MjRMTPI/qC91yq5vLbvv107k/LnplzXNAR8i5StXU1tr32Q0utTiYbzvS&#43;xJHzuifGe1fM2sYX3BMWdMAGbbDD7UhkhLsACIEOMoes2AwWRNzXbmhiYOb6/h/fvT8rh9IgZyO8tW7PBbvI0CXNHXUQeh/zpxw6XlD2m8dWdkmg7w0VhWktF5Un0chwqha1ySElfASWLU7yWsL3p&#43;e3WV&#43;/7NHVtUhCluD56dkza8b6L0CdxoQ41MpSqWAzm3AzjvxxClfmT52dqVe/aUJZbsHkF&#43;ADkMTkisUaTIkIRgQCGGJEFjFZbJo4cblA6so&#43;NlTe79V05L7aadC2i7N/D4EdAeoQQSeOnTop6&#43;d7tx42si2eNAmjDWQQoalolMb5TYwWMBaoZRUSmBnoQzP7k6&#43;&#43;MIu/O3hl8O7n960&#43;qV9J5GGqEGVaKzf16rgsFOTDgD3HtdA1fNq7QFFqOM&#43;X/bTo585d0SPxOVjvd2njk4WAdOKMDDaWFcKyRTF2ffHOgwEJELtxpTa1erijhX&#43;oquWtH0TKD5d6lfyXrc66wL0P2vW2Nn74aLfuF&#43;cE/vtx8bYGQlVsMUig4QQVErC35/JazmAtAlACE8ScxIrW5Nhk5P802tNvPS3i3asWrFlw/ID/IYEGJsWNfNqRE0N0NGTA9jfh&#43;MNQEtIA&#43;PrU7SmoYHmfaEPY00Dqetq9cHV7r2GHT/6x2eOHNZPb/7EsET71MFeblBCFoBikUNDVpMrSGgitlHBaMf3jy6aiUUDosSCDbrhpjr/R/esb76BCHwtd3kyPlCA7tCodB0sGLGPHzXgF589NvHpk44IYcKiCbUVikBaagiropnKFKUmwrIVwlqpSJGIAexhRXscoXCe3NYqX9jIfR754z9WNa5q2l4PwH8jnyId4gztP9GFY/sdO&#43;SKc3v1G5qkkyrDpjlxBDOOLEeygtoAnUNgHEMmBBNJkIKyIUxHphkZkCUYwLiKIV2Sq7cK3L9G3/bt5W0ZwH&#43;tlFVHXRTjAwjojiX8vwnWMDA42e3kr07rnbloPKb1jbfBFAPtsyMVuFSmSvt0NkcVvwwYK4lZKleRcgEAbcbFy60OAuu&#43;srNAr&#43;0uhvUNYXl9Wb/BLyx8cmkx12tIyxNLTmkCfkul8eMdcCbgQzxn4st93GBvUko6d2KvsGVgfx4yvl/P8jAsnNCN2scOiMl4HycAOBelOeqiNREjJoqMgE7nGcXzQxBCCdPNWIZHamtzDAs26yd/urD5xhcLhfuJgL9d2DV09AMP6IN5NQA5d/zASz5&#43;tPP9U4aYgR7n4YfCaEjhkCWgUzFbCTJMADExGBZk2LO&#43;gJMgCCKoqMw&#43;MDG0sIeW9iLIcwptgWrZXZQQxJA22oZh0S0eoMwJK40OvcoyF0kySAoTdQTiPKAtjHZZQ1smwJIQkkVJ2XfkDdt952gZTGDrwSPEQtGUi&#43;Hp9Xj818/uvePRxpY/AsDCqn9eJNAlHyxA79PW86I1lwEMunLysCsunESXT&#43;sWHgERINTG2MAhIbRgQaWkeECwhRWRicUQCCgOx4QAQmsFs2MlSwCWWCohCGwBZQHlANYBWO8nImwBowFWABsTTU4lWKFh2RHEDkmKegXtK3yGgGQDLRwIDqHhgqxlRxijFBSUwvpmgaWb8cQdda3/eGRn2w3RRQPNJYiuQMl/KKA7ZH4K8qN3wUR8ttfor0wuu/7D49wpk3vnByc9Aa2LhgLDIUkZEU4&#43;iB2/nghzpx&#43;YSmOomTvnApU&#43;TaXHJKI5h/4SB4/3KDkv2LJkZZVjgJiR0HGs3GXM4s22Zv6L7bc&#43;1ZC7vQPI1QRZC3SNrPu/AOgOlMxPpcRHstkOx0KPq2cdefaE8nxm9mAztF85ABsiCMkyW7aMqO/dWzpqZ5vrn3fMOfRDQrDMDLasCFYoh4RiCRLY2cpYvCncvXp7&#43;OAfXpA3bdV7ni0BWcyrhng/z4jpkncO0Pu8b5xKkbwrW9LY6HXuqCNmnDPaO31iL3P2yO5mQGWZBawFQm0DS5aZybKkqGkSEwu7rwg16vZsYdmDtASWBTAkiAmCIxrB&#43;9zXsvSqwRBgSyxgLQtmIRiOUArKBSyhqdXH803xXSu2tT3z5Gb9yGNb8DjQug6IIpvvUrlZl7yTgOZO02T/XampqaHejTXi2Iv/Owh1R21qVfdPHbftrPE9w9TQ7mL2sb1QPqi7gZBh1IbAhoCxDKNYA8SlbsVkCaEU8EwAIwXIxmBFCIuo/S1IgxgQCFiQgCSXIaSACAFFACsEPuGl3WQbcmblCzvw7NLN/tJ7NhYeAdobAYKjBFbc8R13SfMAvuKKK7qMvQ&#43;edJQVXgHgpsOpod&#43;qVPQHRn10nHfcyJ7u7PGVZlRlmTekPO726hkrwhEMpVTUCNAKQOQQUhwcCnQUvlulwMSQRkBLCViNUAMtGmhqZ9tepIbmQK/aubPwdN1rePmmJiwCsK3r3v9Ha&#43;pPALilQ0NPeicPlg/zhDAUiYTDQKKIKIgSbge8F1Y0lTfW/WPQ9hWLTh7gtvblQm50z3K3wglzQ3pVeBCmACUcjCjPw1UF7Ml72FhIIkYWHCpszoWFFnLaC6Hz8q6czCX6Dl3YY&#43;xJq4eenNpWPRStpVOIA4iF&#43;VYVFkI4FXHjOImuMPV/kIbWWl&#43;glLoGgCFmfq9vLgPIl16FAUSgEeuw8QiApwIQAhjrITQOOvUut0rAOFFfDkbUqy/WdZ//7wox83vGHZmZqLOH7QBX26F&#43;frNnouTuw&#43;u6PnbJ/xEsdwD6A3DzD/Zhd0mXHFrUB&#43;jh65Iu&#43;afy/wEMxeUHk4NLqwAAAABJRU5ErkJggg==" alt="AI Collective Atlanta" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='flex'">
-    <div id="logo-fallback" style="display:none;align-items:center;gap:10px;justify-content:center;">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0076db,#F97316);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;font-family:Georgia,serif;">C</div>
-      <div>
-        <div style="font-family:Georgia,serif;font-size:18px;font-weight:900;color:#374151;line-height:1.1;">The AI Collective</div>
-        <div style="background:linear-gradient(90deg,#F97316,#0076db);color:#fff;font-size:11px;font-weight:900;letter-spacing:.15em;padding:2px 8px;margin-top:2px;">ATLANTA</div>
-      </div>
+  <div class="legend"><span><span class="swatch"></span><strong>AI Collective</strong> events</span><span style="color:#777;">All events are in-person, metro Atlanta. Click any event for details &amp; registration.</span></div>
+
+  <h2>This week at a glance</h2>
+  <div class="week-grid">
+    <div class="day today"><div class="day-name">Sun</div><div class="day-date">4</div></div>
+    <div class="day"><div class="day-name">Mon</div><div class="day-date">5</div></div>
+    <div class="day"><div class="day-name">Tue</div><div class="day-date">6</div>
+      <a class="chip aic" href="https://luma.com/aic-at-10-6"><span class="badge">AI COLLECTIVE</span>Vibe Night with Agents<span class="t">6:00–8:30 PM · Hudson Grille Sandy Springs</span></a>
+      <a class="chip" href="https://luma.com/3q4dh5hg">AI ❤️ CX: Less hype. More signal.<span class="t">5:00–7:00 PM · Serendipity Labs, Lenox Rd</span></a>
     </div>
+    <div class="day"><div class="day-name">Wed</div><div class="day-date">7</div>
+      <a class="chip aic" href="https://luma.com/aic-at-10-7"><span class="badge">AI COLLECTIVE</span>Brookhaven Monthly Meetup<span class="t">5:30–7:30 PM · Confab Kitchen &amp; Bar</span></a>
+    </div>
+    <div class="day"><div class="day-name">Thu</div><div class="day-date">8</div>
+      <a class="chip" href="https://www.eventbrite.com/e/ai-builders-meetup-october-8th-tickets-1998165800699">AI Builders Meetup<span class="t">5:30–7:30 PM · Alpharetta · $30</span></a>
+    </div>
+    <div class="day"><div class="day-name">Fri</div><div class="day-date">9</div>
+      <a class="chip aic" href="https://luma.com/aic-do-10-9"><span class="badge">AI COLLECTIVE</span>AI for Everybody: Douglasville Launch<span class="t">12:00–1:30 PM · Douglasville</span></a>
+    </div>
+    <div class="day"><div class="day-name">Sat</div><div class="day-date">10</div></div>
   </div>
-  <div class="pill">✦ IN-PERSON EVENTS ✦</div>
-  <div class="title">ATL AI EVENTS</div>
-  <div class="tag">Your guide for in-person AI events,<br>curated weekly by The AI Collective Atlanta</div>
-  <div class="meta" id="mast-meta">Loading...</div>
-  <div class="bar-bot"></div>
-</div>
 
+  <h2>All upcoming events</h2>
 
-<div class="srch">
-  <input type="text" id="q" placeholder="🔍  Search events, topics, organizers…" oninput="go()">
-  <select id="ft" onchange="go()">
-    <option value="">All Event Types</option>
-    <option value="meetup">Meetup</option><option value="social">Social</option>
-    <option value="conference">Conference</option><option value="workshop">Workshop</option>
-    <option value="panel">Panel</option><option value="demo">Demo Night</option>
-    <option value="pitch">Pitch Night</option><option value="hackathon">Hackathon</option>
-    <option value="coffee">Coffee</option><option value="lunch">Lunch/Dinner</option>
-  </select>
-  <select id="fo" onchange="go()"><option value="">All Organizers</option></select>
-  <span id="ev-cnt" style="color:#bbb;font-size:11px;margin-left:auto;"></span>
-</div>
-
-<div class="cnt-wrap">
-
-
-<div class="box feat-box">
-  <div class="feat-hd">
-    <div style="display:flex;align-items:center;">
-      <img class="feat-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAABQCAYAAADLPJ1qAAAW5klEQVR42u1debhUxZX/ne5mU1kEF9wQwQUF17iNS3AfjcsYjZrEJTMRzTgaP3VicJxEx2WMC8QtOkQ0bkPcoo6iEYmguEdNjEGUT0EFRUQ2FUHgdfdv/ri/wvOKe/u916/f4yFd39df31u3blXdqlNnr1OGGieSBiAPoGRmdPndAQwGsAOA7QFsA2AjAN0BbACgW1TVbADLAHwA4GMA7wKYAuBNANPMrCGlzbKZlVFPbZashoCSA2BmVnJ52wA4DMBQALsA6FeDppYBeA/AqwCeA/Csmb0T90PAw/oUdzCAiQGFZF8AxwH4PoDdARSiV8oA6Nq2jH7Q/dOVzUXlSgBeAzAWwINmNtX1rRBjunpaRYmkaUJWYBOS15Kcz8apgWSRZFn3ZZIl5TW452k//7ykd8P74ZlPy0iOI3ksyc6ub3mRrXpaRcCSd9cDSd6kyQqpmAIkYeJbmwIglSIAjIHnbZI/JblOWr/rqR1IklZpzsxKJNcGcB6A88W4AkBRzKeJjJRTyEgZwHT9pgL4RDxJOaVvWwDoC2AQgAH6dY7KFVV/zrUJ9QOqewSA0WZWFNDU&#43;Zt2wCo5d30wySkR2YmxiU8fkxxD8kcktyXZqZr2hc2OIXlz1D4dmcu6f5XkwXVs044kiGQnkiMqAIqfoMUkHyB5FMmeGQBQaOYvl9YnkruS/BXJqa7dchOA85vQH8&#43;D1VPtgKWg/34kn3OTUIr4ipA&#43;0iQOSJngggDFquiH6d18PNEku5A8muT4CFBKGffvBGxTZ4jbBlj2IPmhwyqMGE6SXEjyIpK9IyBpkwlxABQDz14kH8wA5rj/5/u66jNeG2D5R5JfpQy&#43;v76L5Bb&#43;3facAE14PuKzvkPyLYddyhnY5u7AU9UxTeuB5VCSSysAyyckj40AxVZx33OO51pHIr/HiExhzp8NmLEONFVKQyR3ILnIrcgYpY8nuYkjPbkO9h1eV3QCyS9SgIYkl&#43;v/BZJrV8tjrbHAIvS&#43;IcmZKZglAMudYVA7sqShbwnkZjDJBSnkyQPN1rEKoZ6a4AN0/WQKgxiuL3HAlVtNFkAXqQOWR9jSA8vojogpVwddy/kpwBKwzK21FEWdpJNzElXe5VlrgMXpjsY2wcPc5vpTJ0ctWIn9SC6J0HYAlgmtBRYnzTSbOfb6myqY9g1JTowwSazc&#43;5Ufgxpi60J7S4urArvcEwFJED/nkNyoWn1Fmr7ESTFbisE&#43;XMq3Q0gOIblx3JabCGsGsPQlObkJ3dHwahaBJ8fRdbvocyphQoedc20NLDs4N4KYFP2oGgbXi7i670JyP5JXSZSdnWJ3CulLWZwfIHmGnLFizGMZwLIzyWkpwFJy/ye2lSqAZB9942iSp8RSW2uBpaPoXG6NBjgAy0vVfHAEKINIXiqVfCW3hWIKU&#43;qZ0&#43;dInk5y/Vj3E2ml51Xgw5aSPKalC8BJhT3FE02SEfQBkk/p&#43;vfKP02YkiRv0Hudm8AK1oLFfTPJs2OVBsmzpO54Un5Bl7h&#43;W61XRKynCBM3tCUA49GyyM3vnKaYzncldopK&#43;3lHK5/mkPzvoAdybR8rHixL0TiP5J5VYssw8Buorl8IeO7Q/eYkB8hEcrPKLpBTmcXMeBoJqwQ4gQyR7KX23vLlBTjdSf67nl9KskebWOW1IvzAhv&#43;/tFTUdB9wngNCRp51Dc4JqpyCTcquXNEBUDEChPlC/ZtJOVeqoGh8j&#43;TO1eqO3Hf1Izna5Y9Qn/o4oL1Ik/mlY6oHyhE&#43;re5tY2NtBUrwz1oUZQf8eYd99lF/DqglKYw781gkOYRBHtbcAY5E5NsjUtJQgdQEV4jP9FtcgWSVMnxuFmWo/0OZySQ3qoWiMRLXTRiEwtIWSZ1zSN4vLPu&#43;TCl7u/HaQOTjIfF095BcK42pdeP7JMkTI3VAwQHMoXp2RJsAjD50rhvsspuEDZtL/1yH/0vvf5VCSuaTnEByJMlhJA8Ug7qp&#43;tGH5CbKO4rkf4omfxEBTpazVjlFIfeM&#43;458G/B&#43;KwAmGgeThX86yR1Jri8m/3lXx59JPuTuSfKiGLAdAA4l&#43;Zjyxmlx9Yj6E3inw9sKYI6IBjvWu&#43;Sau/L0UTFjO4PkKJKHkVyvyj72k0LxgwxreTnDhWGsMw3kazxuWQDjeZLPSF7j7u8h&#43;b4jURQvdoI8CT8n&#43;XqK0BDaup3kjXIcu1jvnxQk0PYAmAKAfXRdRuIHG3xdJ&#43;k/h5X9bVOTmQXdxgUAPgfwAIB7zWxRhNLDoPotJH4rSfgP&#43;4tmAriG5G8BnAngl0g2vhX1DebqKClvFICfAiiRzPn9UjVOFv03gisAnfTNVL/CWG6lvq4FoI/yzgbwvpuPgN1LsqbvCeB1JH7UywF8CeBskmOQ7hPdJmL14xGjGFbukbUyLrbWkSplS8v2JJ&#43;PdhF4PmlkW6v63aq/RhiuZwqGWaDnQcK5l&#43;S7era1&#43;npiJaWca&#43;dskqOisiMio6mRPEj9ObitSNI7EVoP4uyQlpCkWKHmfHZrubvS61u6iNTFjuDn1tLe1Qzm9y61PTCFlCwmeWckXMx0/XtJZGsr5Z1E8hFvS9OvpxSRx6tcN/3vqLZ/78blSOWd01YAMy&#43;F4f08KMc6ojEuWsUHSowdTnKnaoC8SvF6Q03uDJKzSL4i9USY5Cu1W&#43;J9STWnigH&#43;kOTFqmMT2bpmk3xZAsF2zuZmEgieI/mp2jhd&#43;TuL8Z2lObxVfN5flPcuyes94NWE/pJkRHMNwGcAtjSz&#43;SStI&#43;7h0QBYvPle/Eq5HdoviPdYIv6hi/itz/R8PQBLNZ558W3FwNeY2QJX11YAuprZ5JR2OgHoqXa6AqCZLRSW6Q5gsersFng&#43;JPvP8wC6mNncWn94OcXWMt1vNe3ohtPV1TKcwq90eGf0QsRNh&#43;v1APQAMK&#43;jYhgnmZVWMZZbSVJsDik3M7qyOeWVnbSY2U5z2/BlawkwDQA6oZ6qAVZWO1GBpIrElFMAp8m6WgoMtVj8OSSBezz/QgBrIwny03by/DckRSQx31zLszBMoz3eui&#43;3UT9NejJrLYb5GEmgHw8weQADAbxVB5jK5Kgakqh319fC/MrMPpEep7fGf7aZLWtl3xpFAYv/W4Nhpkaa1gDhu9QxTOXVqhX7bZK/JHk5yQO0O2FAGo/hmNw8Em3t2wDu1eNjADwN4B0kId2q1qGob0X1L&#43;iLBsgh7fzW1J0D8HwEGOF/3wiA6qmxHqY3ybFITBBfClNfD&#43;ANAPupeN6TLKkBKL7lfAAvAVhXk3w7gJ/F/GTkH5yv8KzgdEDrkTxZ/kJBgdkDSVzB4EOU9l7BK1ujgAm50OjWzsHJi9hfkdy4oyrvVqXSUIP7pPxSerln62vcTtZ954z3wyQ9SvINN/m7aw52c7qeLIC1LIUmyf6awz1SdDotVo76vAKAaUiiU37L8TFFKYkOBzBaKLRYBxbmFUxpfwCHABhuZp&#43;RDAq1uXJX6CuytVweiwchMTSOM7OXVQ89xtB9Z88CKABSTwCnChNNNbMxEQN7OoCNAcwE8DuS2yGJL7gcwAkkdwQwDklgykUk31TZk5EoaNdGEh&#43;wO4Bvq/0XzWw6yV0AHK28R83s1aAVfSQiP6HTPw4Rm&#43;q4pdG4HKoxeUaT1gBgua6HA3hIE3oxgEcB/F28yXiSw33I2BgmfTsyz7yKJALXnwHcSPJm1d0FwETxPi8DuA7AbUg0zn21yNcXCcojsY4/DOAUtbMvgD8IuEK6GMDPATSQ/AGACQD&#43;BuBTAC8Hl4nge9sQ2ZOC1nff1jBJ3zAMEwx8IzU2mcwpyS1U5iyXd6Hy&#43;uv&#43;iUCSdL&#43;3nv&#43;D7m8iOds9v0DPu5H8V1330rPXSb6j6356tkvUpy/DzlXdv0XyKXd/v&#43;vbIpKXu2fvknytIPQ4jeSTAL6Dr/1JArRfCmD/OnJplILfUJcUSaiTMMi&#43;KvOiA6jXhZkGIwlYnWUGCOR/KBJfmD&#43;qbC8Ac0Q&#43;jkcSJ/AL1X80gK7iPYKjWp8QelaYpxDxKFcBuEOW9l4ACmb2AclvAVgHwOHip0LswLw3DVwrnsXcoJQA7EfyeDO7n2TBzIp1eMFkjdMhZvaa/HtXSJ4kB2vSy9HiW0HyXQBqcw5WOSe9Aolz1UyRkS4AGszsU014T0ldZc3LDAcMpYjE&#43;Wu/ye1BADcBOAeJoXS0FkDo510A7pHk9oWZfR5z1&#43;Mzdj5&#43;pO0NOa7Bm9Wd&#43;Lm2XBcWBudyV&#43;ZykaxNNYanumdnKm9L3T9M8hX3fIhYg&#43;10P0b7qLyB8jCRnMtU12bu2dFyuxikOdw16tsip4fpqv&#43;r1eb/ue/robx7o/eHwdNgebLFgZgD8Nwf6PiaLGa7xbW3nNrnkzxHjkv/I14i8BW3yoF9L&#43;34XEzySj0bLL5gmZy71yN5g8b6CgHlYAHl6yR/KKf4VwQUG8sPZibJH&#43;idF&#43;RsNUj1TJSPzHZqnyRf030Q7beMdrcG3&#43;BzXVSL70kFcLeliIzXSIFUdDQvXP/SzC53dHqNBRqRgs0ADJOi7nNJK9ea2VeuzOkADhRJGBvEYvGFg1TlPCTh749E4veyFoD/lT/SlgD&#43;DUmM4jcBjHA&#43;NwMAnCEJ6A0AV6rtTurXTgBmAbhVfewu0vaGmU1y4vnZam&#43;B9zOSVPRD9XGimd0Wo9u8OPC3KwQTOqWlSqBvMqZpQhtsLXkvq54s0tgeGu2VTCIZK2dXAC/i6wjbPrI3AZxiZvesqVG13aSvOHbHCQulDIkqlC85xjbnmGFGY12K2mBUNu1ZKWrX15V3fSxHurV8Sr9Dfpr0lqpr&#43;HFGXJWyD5WxKnU0Ts2e89tF66ntNZcrAY3U0pcAuAiNnaxWyOQAxgA4S&#43;rxPJwzUDugy9S9Rm3t0ytSvEGlIhljywrjz0rz0cx60/KtGW2jGX1Y4ettFSYkL6D5DZLNYw1o7NIZ0Nx0AOeY2WMOQ7WJI1AMKI7p2wnAQiTnJd3nfFVYw7aDULALvrbwxxPAlOvmAEKliW2qfk9mLAUQmwOEaKIPZZHLM5vSOQRx&#43;/qUfc1x/JW7w/4aRy5qFQsvF21k6yqxb0HKpv0bXf9ztQQY/e/GNS&#43;FOT&#43;tOYqqMFA/z9jX7KNqL5EuYkgGr5GvtE/GKY6yzhRYi&#43;RPXIRvH0bEH7h1lw8pVmOA2dVt9ovj2RSljxlI8k8u/69Stm0hHcnWuh&#43;h5&#43;dof1Vcb7DvPaU6j3LjHcocrjqfcZN7jSK4l7WztZ8cqAaR3Er397k6PpLOZzvtaSpHYVZCP4Y1V7sZBus47dSLTzJJE8GfkBNP3yYwR5PbaPUhl7kwZGnYLo7aMCHEY6kFMxwBDDO&#43;/SlpxPfU5IYFtUD&#43;M6NVx2m6D0f4fE8x&#43;bLqPVR19pZyzhuHw47LHfTtAQCDT8wstXWnyl2o&#43;xmu/qsVY2eAAhFlRe8a1pIBC9LTNm5fc1oUhfgwiIWavEsUKWJbkutmWHjzCvmxvQbxRmk5GzLixDDjLAEf3Xt93/82ApjQvxOltX1GGHVeVG6WFsmoqI6TNVnxlmWSnKt2J5HcV9tp/bhvrqhT3RRciQrmNDgao3lq&#43;48p&#43;9D6C1CucJbuUqsAJhq0vCB1ScaZRGnRovyzucIWk2S/Gq/JnZbBlzAjKFG5QtiPMInTnO2m0EYAEzwUe7kQZj1J3uLOoiySfEt1jNT9Egdo/aN6Q/9vUSiywCf2ihbQutrkf4MAYqlMCNu4xVMkOV1t36f7cIbEVOXP0uLORYd6NAKYFtF3SQk5MyuZ2RUAdkPifJVzCqySU/rkneKoqH9DYn4fiMTD62D99lLeuk4KKzpFVQGNw4QUneLqTQCLIsVYQWUGAphAcjdJfbXWUIf2JkhlPwHAf6gv90cKNm&#43;NzqdIMEX3C2XvUNkLAIxXG0&#43;7dwoA5iIJbdIDiRNULzR2hktrO0hD9&#43;j/OgBXS7q9M7Kur0gtZgilCTbpaqaY2dFIPNCeigaipF/YtlJwHaUDLv/zWsy8AxKvaQ6AUgCwAEmsmJ0B/JPsMPkIaEpIttE8Q/IAM2toI7PGveKZpiBxedwEiZP3R06HFaJP5FJE5s7qbyf33R8i8aHZCMDjAKYo4tSd7t1OTgN7nZldpfZ7Z7AV5t4DgPtkExsHYKyuH8nQ9DZiPqs5JS0XRVI4QAdXLEwhHVlHCmeJceUU6SekuTqKb/PIgrxPxkFgRSfFnVANecogSaWIz/CS5HzlXezypijvStcfkvy&#43;8k8Q73ZSdK7DwpRDwUJeJzGtIYW4MLtE4xBI0hhXdpLynnB545X3VBQOlySHFQLWqEZL6t4LNqWJACbKR&#43;QgJA5ZewPYFCsfeI4MtOcPPs9H6PoVofn7zOyTSKFWMLPn5aD9JwD9nZU9kMtuwgQ9zeyWKg9CD&#43;SQzv7znmK3nCIFZwlAT1mByw4DdBfADnZ5RQD7kyzK4h2w7XIkvrXnitQs1XecTHKGFKY7InHm9vWNJHkFki0lRdf&#43;Wmq7vys7R767e6rfALC78ma698N3r7CqDgAwx8wWhwloDWPo39e50YMBDEGyM2GI0PUGmsA0tLdMgzcDiQP1ywBeMLO3o7YaGT6dSWMTAdZeaOymUXYk8jIzu6i5BlQHmHuoP2tiOtO0LeJIJLHVvmtmU1rriul29zHD3hNiq/TA1/6nfgXPAvC5mX2RUW8mVnAT2x3AY2Kss2xhI83sZ1mxZjIs&#43;QMBXJOipi&#43;h8fnZcEx&#43;3rUdlzPH6yFiZj0PGNoqu/4bGp/b7S3R3pKd1kek1JXVx1DmZkSi3Gw5ANfs4KzoBJOWnkpiVb4X&#43;I0uLqRYQ8bRN/c6HVN9w15TbIiYnIPdKlwC4Hgze7xKGt9cDBTzKzGWYWva9fyYNKxpSqdArh4VL7CoKaNlMICuofBSDmHLl0bKt2IILlgr1fqqSJFZ40Ip17JOZHtWGKl&#43;IlszBna4Gzwv7t7h7DGrnfN3dOajkfxbJA7HQDOglgbLbyqwFCJZfHlE86eSPDAuvxp8lw9/OpTk35s4VfYP9TMfW6B8kyX0tQhYPKN4c3ROUb6jYRxPgnTf2wU/ZkoAyECCR7kwp3XGtzlAo/91dWCCX3neEvyh4sR28hinAxxuHgNKgeS/uLMJyhnWV5L8haujDixViKK9FEg49nnxg/yGzu3pHGGcdsM6TlyPAeUoB/Rp7hcNzrxwlMOydWBpBabpTPK3KYMeuxNMlqtk3xj4nDd/LUPHp&#43;4O0K7B0x2fkuZg5fs93jkeFeozXwOg0fVPFEY&#43;noDY/2UeydvkGbZOGvZyLpr5KI5&#43;2s974hUynK266aiXUTrIKs1lNL5fRPK81Y2BX930F9tE1syGCoATzke6SxbXrWuMYfrLonubYvizgide3Lf7o1M/6tJQFcmaErmDTYnkGUhixQTbT7A3ZNkpgESTOhVJeIy39ZuBZEvIHKTvtisgMUyui8SyOgCJVXYwkj3E3RppHle2hXgHLiCxcF9sZuPib6qnGgOMJ1EyvG0E4EIkavauDijStmF6o1ucSgDmI3t7Zp8m3mUEnP5gLThA&#43;TWAB9T31Cjb9dQ&#43;irDtdUbPspRzp8spp9A3pIQRac5emEon0JZdnYwY2uOimCr1LbQdRN8xiOSvnZcbo1PSKh0z3NSvEgDFqv0PFQ9u1ywgr6d2IkkVyJS5Las9ARwB4LtI4p7E/qTBpyK02dQ5ifE5kGkTPxuJZ93DAJ4O4bTivtVTBwCYLMBR3gZIgvkNReL6tzWSQDatTXPEPL&#43;IxGv&#43;r97Bqj2DAdQBpgakChkedgrjuT0Sz/6tAGyOxIu/G1aOglBCEoJ9ERKf0neRHJAxGUlQ4/kZJGeNi1GzqtL/A22oAKqUCPxgAAAAAElFTkSuQmCC" alt="AI Collective Atlanta" onerror="this.outerHTML='&lt;span style=\'font-family:Georgia,serif;font-weight:900;font-size:13px;color:#fff;\'&gt;★ Featured Events&lt;/span&gt;'">
-      <span class="feat-pill" id="feat-cnt"></span>
-    </div>
-    <div id="feat-pg-wrap" style="display:none;align-items:center;gap:8px;">
-      <button class="feat-pg-btn" id="feat-prev" onclick="featShift(-1)">‹</button>
-      <span id="feat-pg-lbl" style="color:#fff;font-size:11px;"></span>
-      <button class="feat-pg-btn" id="feat-next" onclick="featShift(1)">›</button>
-    </div>
+  <div class="event aic">
+    <span class="aic-tag">AI COLLECTIVE</span>
+    <h3><a href="https://luma.com/aic-at-10-6">Vibe Night with Agents in Sandy Springs</a></h3>
+    <div class="meta">Tue, Oct 6 · 6:00–8:30 PM EDT · Hudson Grille Sandy Springs, 6317 Roswell Rd NE</div>
+    <p class="desc">Relaxed evening for AI builders and the AI-curious — demos, stories, and shop talk about agents. Free.</p>
+    <a class="btn" href="https://luma.com/aic-at-10-6">RSVP on Luma</a>
   </div>
-  <div class="feat-grid" id="feat-grid"></div>
-  <div class="feat-dots" id="feat-dots"></div>
-</div>
 
-
-<div class="box cal-box">
-  <div class="cal-hd">
-    <span class="ttl">Event Calendar</span>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <button class="cal-nav" onclick="calShift(-1)">← Prev</button>
-      <span class="cal-mon" id="cal-lbl"></span>
-      <button class="cal-nav" onclick="calShift(1)">Next →</button>
-    </div>
+  <div class="event">
+    <h3><a href="https://luma.com/3q4dh5hg">AI ❤️ CX: Less hype. More signal.</a></h3>
+    <div class="meta">Tue, Oct 6 · 5:00–7:00 PM EDT · Serendipity Labs (21st fl), 3550 Lenox Rd NE, Atlanta</div>
+    <p class="desc">Cut through the AI hype with real signal on AI in customer experience. Listed on the AI Collective calendar; organized by Molly Pailet. Free.</p>
+    <a class="btn" href="https://luma.com/3q4dh5hg">RSVP on Luma</a>
   </div>
-  <div class="cal-dows"><div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div></div>
-  <div class="cal-grid" id="cal-grid"></div>
-  <div class="cal-leg" id="cal-leg"><button class="cal-exp-btn" onclick="openExp()">⛶ Expand Calendar</button></div>
-</div>
 
-
-<div class="box ev-box">
-  <div class="ev-hd"><span class="ttl">Upcoming Events</span></div>
-  <div id="ev-list"></div>
-</div>
-
-
-<div class="src-box">
-  <div class="src-hd"><span>Sources — Checked Weekly</span></div>
-  <div class="src-body">
-    <div class="src-list">
-      <span>Lu.ma</span><span>Eventbrite</span><span>Meetup.com</span><span>LinkedIn</span><span>Facebook</span><span>Instagram</span><span>Reddit</span><span>TikTok</span><span>AMA</span><span>ATDC</span><span>Tech Village</span><span>Tech Park</span><span>Tech North ATL</span><span>Improving</span><span>Microsoft</span><span>Google</span><span>ATL Tech Events</span><span>JoinAIWeek.com</span><span>AI Collective ATL</span><span>TAG Georgia</span><span>AI Marketing Pulse</span><span>AI Camp</span><span>AI Week</span><span>AI Tinkerers</span><span>Product Coffee</span><span>ATL Cust. Success</span><span>Ent. Tech. Assoc.</span><span>GSU</span><span>Kennesaw State</span><span>Georgia Tech</span><span>Tech Square</span>
-    </div>
-    <div style="font-size:10px;color:var(--mu);margin-top:8px;padding-top:8px;border-top:1px solid var(--ru);">✓ Every event verified with a confirmed live source URL. Updated automatically every Sunday at 6:00 AM.</div>
+  <div class="event aic">
+    <span class="aic-tag">AI COLLECTIVE</span>
+    <h3><a href="https://luma.com/aic-at-10-7">Brookhaven Monthly Meetup</a></h3>
+    <div class="meta">Wed, Oct 7 · 5:30–7:30 PM EDT · Confab Kitchen &amp; Bar, 1350 Dresden Dr NE Suite 1015, Atlanta</div>
+    <p class="desc">Monthly happy-hour social for the AI Collective ATL community. Free.</p>
+    <a class="btn" href="https://luma.com/aic-at-10-7">RSVP on Luma</a>
   </div>
-</div>
 
-
-<div class="box sub-box">
-  <div class="sub-hd"><span class="ttl">Add Your Event</span></div>
-  <div class="sub-body">
-    <p style="font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:14px;">Submit an in-person Atlanta-area AI event.<br><strong>All submissions reviewed before publishing.</strong></p>
-    <div class="sub-grid" id="sub-form">
-      <input type="url"  id="f-url"  placeholder="Event landing page URL *">
-      <input type="text" id="f-nm"   placeholder="Event name *">
-      <input type="date" id="f-dt">
-      <input type="text" id="f-org"  placeholder="Organizer name">
-      <input type="text" id="f-loc"  placeholder="Venue / Location">
-    </div>
-    <textarea class="sub-ta" id="f-desc" placeholder="Brief description…"></textarea>
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px;">
-      <button class="sub-btn" onclick="submitEv()">SUBMIT FOR REVIEW →</button>
-      <span style="font-size:10px;color:var(--mu);line-height:1.6;">⚠️ In-person Atlanta-area AI events only.<br>Submissions go to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89e4e8fbe2c9e8e0eae6e5e5eceafde0ffeca7eae6e4">[email&#160;protected]</a> for review.</span>
-    </div>
-    <div class="sub-ok" id="sub-ok">✓ Submitted! Thank you — we'll review and add if it qualifies.</div>
+  <div class="event">
+    <h3><a href="https://www.eventbrite.com/e/ai-builders-meetup-october-8th-tickets-1998165800699">AI Builders Meetup — October</a></h3>
+    <div class="meta">Thu, Oct 8 · 5:30–7:30 PM · 11675 Rainwater Dr, Suite 100, Alpharetta · $30</div>
+    <p class="desc">Live show-and-tell: 5–7 builders demo what they're building, their tools and tech stacks, and lessons learned. Founders, PMs, engineers, and AI enthusiasts welcome.</p>
+    <a class="btn" href="https://www.eventbrite.com/e/ai-builders-meetup-october-8th-tickets-1998165800699">Get tickets</a>
   </div>
-</div>
 
-</div>
-
-
-<div class="foot">
-  <div class="foot-bar"></div>
-  ATL AI EVENTS &nbsp;·&nbsp; Curated by <strong style="color:#fff;">AI Collective Atlanta</strong>
-  &nbsp;·&nbsp; <a href="https://aicollective.com/chapters/atlanta" style="color:#aaa;">aicollective.com/chapters/atlanta</a>
-  &nbsp;·&nbsp; Updated every Sunday at 6:00 AM
-  <div style="font-style:italic;color:#666;font-size:10px;margin-top:4px;">"There's nothing like meeting in person."</div>
-</div>
-
-
-<div class="overlay" id="day-ov" onclick="if(event.target===this)closePop()">
-  <div class="pop-box">
-    <div class="pop-hd">
-      <div><div class="pop-date" id="pop-date"></div><div class="pop-sub" id="pop-sub"></div></div>
-      <button class="pop-cls" onclick="closePop()">✕</button>
-    </div>
-    <div class="pop-body" id="pop-body"></div>
+  <div class="event aic">
+    <span class="aic-tag">AI COLLECTIVE</span>
+    <h3><a href="https://luma.com/aic-do-10-9">AI for Everybody — Douglasville Launch</a></h3>
+    <div class="meta">Fri, Oct 9 · 12:00–1:30 PM EDT · Douglasville, GA (address on registration)</div>
+    <p class="desc">First gathering of the brand-new AI Collective Douglasville chapter. Free.</p>
+    <a class="btn" href="https://luma.com/aic-do-10-9">RSVP on Luma</a>
   </div>
-</div>
 
-
-<div class="cal-exp" id="cal-exp" onclick="if(event.target===this)closeExp()">
-  <div class="cal-exp-inner">
-    <div class="cal-exp-hd">
-      <div style="display:flex;align-items:center;gap:12px;">
-        <button class="cal-nav" onclick="calShift(-1);buildExp()">← Prev</button>
-        <span class="cal-mon" id="cal-exp-lbl"></span>
-        <button class="cal-nav" onclick="calShift(1);buildExp()">Next →</button>
-      </div>
-      <button class="cal-exp-cls" onclick="closeExp()">✕ Close</button>
-    </div>
-    <div class="cal-exp-dows"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
-    <div class="cal-exp-wrap"><div class="cal-exp-grid" id="cal-exp-grid"></div></div>
-    <div class="cal-exp-leg" id="cal-exp-leg"></div>
+  <div class="event">
+    <h3><a href="https://www.eventbrite.com/e/ai-summit-2026-tickets-1989833079305">Avant South / AI Summit 2026</a></h3>
+    <div class="meta">Mon–Tue, Oct 12–13 · Tech Square, 79 5th St, Atlanta</div>
+    <p class="desc">Applied-AI summit with OpenAI, Home Depot, Truist, Coca-Cola, Georgia Tech, and the City of Atlanta. Keynotes, roundtables, AI activations, and a student founder pitch competition. Select audience — check the site for access.</p>
+    <a class="btn" href="https://www.eventbrite.com/e/ai-summit-2026-tickets-1989833079305">Details</a>
   </div>
-</div>
 
-
-<div class="pin-ov" id="pin-ov" onclick="if(event.target===this)closePin()">
-  <div class="pin-box">
-    <div class="pin-ti">Manager Access</div>
-    <div class="pin-su">Enter your PIN to continue</div>
-    <input class="pin-in" id="pin-in" type="password" maxlength="6" placeholder="PIN" onkeydown="if(event.key==='Enter')checkPin()">
-    <div class="pin-er" id="pin-er">Incorrect PIN. Try again.</div>
-    <div class="pin-bts">
-      <button class="pin-ok" onclick="checkPin()">ENTER</button>
-      <button class="pin-cn" onclick="closePin()">CANCEL</button>
-    </div>
+  <div class="event aic">
+    <span class="aic-tag">AI COLLECTIVE</span>
+    <h3><a href="https://luma.com/aic-at-10-13">Vibe Night Midtown — Job Night</a></h3>
+    <div class="meta">Tue, Oct 13 · 6:00–8:30 PM EDT · Hudson Grille Midtown, 942 Peachtree St NE, Atlanta</div>
+    <p class="desc">Vibe Night meets career night — connect with AI builders and folks hiring. Free.</p>
+    <a class="btn" href="https://luma.com/aic-at-10-13">RSVP on Luma</a>
   </div>
-</div>
 
-
-<div class="mgr-panel" id="mgr-panel">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-    <span style="font-weight:900;font-size:14px;color:var(--or);">⚙ MANAGER MODE</span>
-    <button onclick="closeMgr()" style="background:none;border:none;color:#aaa;font-size:18px;cursor:pointer;">✕</button>
+  <div class="event">
+    <h3><a href="https://luma.com/h4h-atlanta">Hack for Humanity: Atlanta</a></h3>
+    <div class="meta">Wed, Oct 14 · 4:30–8:30 PM EDT · Alpharetta, GA (address on registration)</div>
+    <p class="desc">Build AI for good — presented by Google Developer Group Alpharetta as part of the global Hack for Humanity initiative. Listed on the AI Collective calendar. Free.</p>
+    <a class="btn" href="https://luma.com/h4h-atlanta">RSVP on Luma</a>
   </div>
-  <div id="mgr-stat" style="font-size:11px;color:#aaa;margin-bottom:12px;">Last updated: loading...</div>
-  <button class="mgr-btn" style="background:var(--bl);color:#fff;" onclick="resetF()">⟳ Reset Filters</button>
-  <button class="mgr-btn" style="background:var(--or);color:#fff;" onclick="mgrSync()">↻ Sync Now</button>
-  <div id="mgr-msg" style="display:none;font-size:11px;color:#aaa;margin-top:4px;">Open Apps Script → run runNow()</div>
-  <div style="margin-top:10px;padding-top:8px;border-top:1px solid #555;font-size:10px;color:#666;">Showing <span id="mgr-cnt">—</span> events &nbsp;|&nbsp;<span onclick="closeMgr()" style="cursor:pointer;text-decoration:underline;">sign out</span></div>
+
+  <div class="event">
+    <h3><a href="https://www.meetup.com/find/us--ga--atlanta/data-science/">Google Agentic AI Builder Lab</a></h3>
+    <div class="meta">Thu, Oct 15 · 5:30 PM EDT · Atlanta (venue on Meetup page) · Hosted by Atlanta AI Developers</div>
+    <p class="desc">Hands-on lab building with agentic AI. Check the Meetup page for the venue.</p>
+    <a class="btn" href="https://www.meetup.com/find/us--ga--atlanta/data-science/">View on Meetup</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://ai.gatech.edu/event/ai-working-mathematician-lunch-discussion-group">AI for the Working Mathematician — Lunch Discussion</a></h3>
+    <div class="meta">Thu, Oct 15 (also Nov 5, Nov 19) · Georgia Tech · Free, lunch provided, no RSVP needed</div>
+    <p class="desc">Niche but fascinating: LLMs for proofs, Lean, and math literature search. Open to anyone curious.</p>
+    <a class="btn" href="https://ai.gatech.edu/event/ai-working-mathematician-lunch-discussion-group">Details</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://news.research.gatech.edu/taxonomy/term/487">CTRL+CM: Kamau Bobb — "The Bullwhip's Algorithm"</a></h3>
+    <div class="meta">Fri, Oct 16 · 11:00 AM–1:00 PM · Scholars Event Theater, Price Gilbert Library, Georgia Tech · Free, lunch provided, registration required</div>
+    <p class="desc">Book talk on how AI intersects with history, culture, and racial systems.</p>
+    <a class="btn" href="https://news.research.gatech.edu/taxonomy/term/487">Register</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://aicreatorweekend.com/">AI Music &amp; Video Creator Weekend</a></h3>
+    <div class="meta">Sat–Sun, Oct 17–18 · Cr8tive Lyfe Studios, 2700 Northeast Expy, Atlanta · Sat $25 · Sun $99–$199</div>
+    <p class="desc">Hands-on workshops in AI-generated music and music videos — Director's Chair masterclass, industry panel, and a Saturday creator meetup.</p>
+    <a class="btn" href="https://aicreatorweekend.com/">Get tickets</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://www.meetup.com/refactr-tech/events/315992186/">Open Source Night</a></h3>
+    <div class="meta">Tue, Oct 20 · 6:30–8:30 PM · Tech Square ATL · Free (food &amp; drinks by Vonage)</div>
+    <p class="desc">Joint meetup with a talk on engineering guardrails for AI coding agents — by Drew Schillinger, who also organizes the AI Collective's Vibe Night Midtown.</p>
+    <a class="btn" href="https://www.meetup.com/refactr-tech/events/315992186/">RSVP on Meetup</a>
+  </div>
+
+  <div class="event aic">
+    <span class="aic-tag">AI COLLECTIVE</span>
+    <h3><a href="https://luma.com/aic-at-9-16-2">Sandy Springs AI Meetup</a></h3>
+    <div class="meta">Wed, Oct 21 · 5:30–8:00 PM · Mutation Brewery, 5825 Roswell Rd NE, Sandy Springs · Free</div>
+    <p class="desc">Monthly relaxed social for AI builders and the AI-curious. Date inferred from the monthly pattern — confirm on the AI Collective calendar.</p>
+    <a class="btn" href="https://luma.com/aicatl">AI Collective calendar</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://www.meetup.com/atl-ai/join/">Dirty South AI Demo Night</a></h3>
+    <div class="meta">Sat, Oct 24 · 7:00 PM EDT · South Park Lofts, 174 Chester Ave SE, Atlanta (Reynoldstown) · Free</div>
+    <p class="desc">Monthly hacker demo night — bring a laptop, see new AI builds and tools, then networking and board games. Also Nov 21.</p>
+    <a class="btn" href="https://www.meetup.com/atl-ai/join/">Join on Meetup</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://www.eventbrite.ca/e/atlanta-ai-tech-finance-networking-event-tickets-2001881349004">Atlanta AI, Tech &amp; Finance Networking</a></h3>
+    <div class="meta">Wed, Oct 28 · 7:00–9:00 PM · Three Arches Bar &amp; Restaurant, 3301 Lenox Pkwy, Atlanta</div>
+    <p class="desc">General tech/finance networking with an AI angle.</p>
+    <a class="btn" href="https://www.eventbrite.ca/e/atlanta-ai-tech-finance-networking-event-tickets-2001881349004">Get tickets</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://www.meetup.com/google-developer-groups-gdg-atlanta/">Google DevFest Atlanta 2026</a></h3>
+    <div class="meta">Fri–Sat, Oct 30–31 · Morehouse College, 830 Westview Dr SW, Atlanta · 1,000+ attendees</div>
+    <p class="desc">The Southeast's premier dev gathering goes agentic: Gemini API codelabs, Generative AI Leader certification bootcamp, autonomous agents, a live robotics demo on the quad, and a City of Atlanta 311 civic challenge.</p>
+    <a class="btn" href="https://www.meetup.com/google-developer-groups-gdg-atlanta/">RSVP on Meetup</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://www.eventbrite.com/e/atl-ai-hackathon-tickets-2000982263816">ATL AI Hackathon</a></h3>
+    <div class="meta">Sat, Nov 7 · 10:00 AM–4:00 PM · Emory University, 201 Dowman Dr, Atlanta</div>
+    <p class="desc">Build AI projects from scratch — solo or in teams, all experience levels welcome.</p>
+    <a class="btn" href="https://www.eventbrite.com/e/atl-ai-hackathon-tickets-2000982263816">Get tickets</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://www.eventbrite.com/e/ai-builders-meetup-tickets-1972699005830">AI Builders Meetup — Nov 10 &amp; Dec 8</a></h3>
+    <div class="meta">Tue, Nov 10 &amp; Tue, Dec 8 · 5:30 PM · Alpharetta · $30 each</div>
+    <p class="desc">The monthly builder show-and-tell continues through year-end.</p>
+    <a class="btn" href="https://www.eventbrite.com/e/ai-builders-meetup-tickets-1972699005830">Get tickets</a>
+  </div>
+
+  <div class="event">
+    <h3><a href="https://markcubanai.org">Mark Cuban Foundation AI Bootcamp</a></h3>
+    <div class="meta">Sat, Nov 7 &amp; Nov 14 · Atlanta (apply for venue) · Free</div>
+    <p class="desc">Free AI bootcamp for grades 9–12: generative AI, real-world applications, and a mentored capstone. Meals, transportation help, and tech provided.</p>
+    <a class="btn" href="https://markcubanai.org">Apply</a>
+  </div>
+
+  <footer>
+    Curated by the AI Collective · Updated October 4, 2026 · Refreshes every Sunday<br>
+    <a href="https://luma.com/aicatl" style="color:#FF6B00;">AI Collective Southeast calendar on Luma</a>
+  </footer>
+
 </div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var EVENTS=<?!= eventsJson ?>;
-var LAST_UPDATED="<?!= lastUpdated ?>";
-var AIC_ICON="data:image/png;base64,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";
-
-var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
-var MNS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-var DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-var ET={meetup:{bg:'#c2410c'},social:{bg:'#c2410c'},panel:{bg:'#0ea5e9'},discussion:{bg:'#0ea5e9'},demo:{bg:'#9ca3af'},pitch:{bg:'#ca8a04'},coffee:{bg:'#92400e'},breakfast:{bg:'#92400e'},lunch:{bg:'#86efac'},dinner:{bg:'#86efac'},hackathon:{bg:'#db2777'},conference:{bg:'#7c3aed'},workshop:{bg:'#111827'}};
-var ETL={meetup:'Meetup',social:'Social',panel:'Panel',discussion:'Discussion',demo:'Demo Night',pitch:'Pitch Night',coffee:'Coffee',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',hackathon:'Hackathon',conference:'Conference',workshop:'Workshop'};
-var _n=new Date();
-var TY=_n.getFullYear(),TM=_n.getMonth(),TD=_n.getDate();
-var calY=TY,calM=TM;
-var vis=[],fPg=0,FPP=4;
-var logoN=0,logoT=null,mgrOn=false;
-
-(function boot(){
-  document.getElementById('mast-meta').textContent='Today: '+_n.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+'  ·  Last updated: '+LAST_UPDATED;
-  document.getElementById('logo-wrap').addEventListener('click',function(){logoN++;clearTimeout(logoT);if(logoN>=3){logoN=0;openPin();}else logoT=setTimeout(function(){logoN=0;},1200);});
-  var sel=document.getElementById('fo'),orgs=[],AIC='The AI Collective Atlanta';
-  EVENTS.forEach(function(e){if(orgs.indexOf(e.organizer)===-1)orgs.push(e.organizer);});
-  [AIC].concat(orgs.filter(function(o){return o!==AIC;}).sort()).forEach(function(o){var op=document.createElement('option');op.value=o;op.textContent=o===AIC?'★ '+AIC:o;sel.appendChild(op);});
-  go();
-})();
-
-function pd(s){var p=s.split('-');return{y:+p[0],m:+p[1]-1,d:+p[2]};}
-function fut(e){var p=pd(e.date);if(p.y>TY)return true;if(p.y===TY&&p.m>TM)return true;return p.y===TY&&p.m===TM&&p.d>=TD;}
-function x(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function etBg(t){return(ET[t]||{bg:'#374151'}).bg;}
-function etLbl(t){return ETL[t]||t;}
-
-function go(){
-  var q=document.getElementById('q').value.toLowerCase();
-  var ft=document.getElementById('ft').value;
-  var fo=document.getElementById('fo').value;
-  vis=EVENTS.filter(function(e){
-    if(!fut(e))return false;
-    if(ft&&e.type!==ft)return false;
-    if(fo&&e.organizer!==fo)return false;
-    if(q){var h=[e.name,e.organizer,e.venue,e.description].concat(e.topics||[]).join(' ').toLowerCase();if(h.indexOf(q)===-1)return false;}
-    return true;
-  }).sort(function(a,b){return a.date<b.date?-1:1;});
-  document.getElementById('ev-cnt').textContent=vis.length+' event'+(vis.length!==1?'s':'')+' found';
-  buildFeat();buildCal();buildList();
-  if(mgrOn)document.getElementById('mgr-cnt').textContent=vis.length+' events';
-}
-function resetF(){document.getElementById('q').value='';document.getElementById('ft').value='';document.getElementById('fo').value='';go();}
-
-function getFeat(){return EVENTS.filter(function(e){return e.featured&&fut(e);}).sort(function(a,b){return a.date<b.date?-1:1;});}
-function featShift(d){var f=getFeat(),pg=Math.ceil(f.length/FPP)||1;fPg=Math.max(0,Math.min(pg-1,fPg+d));buildFeat();}
-function buildFeat(){
-  var f=getFeat(),pg=Math.ceil(f.length/FPP)||1;
-  if(fPg>=pg)fPg=0;
-  document.getElementById('feat-cnt').textContent=f.length+' event'+(f.length!==1?'s':'');
-  var pgW=document.getElementById('feat-pg-wrap');
-  if(pg>1){pgW.style.display='flex';document.getElementById('feat-pg-lbl').textContent=(fPg+1)+'/'+pg;document.getElementById('feat-prev').disabled=(fPg===0);document.getElementById('feat-next').disabled=(fPg>=pg-1);}else{pgW.style.display='none';}
-  var dotsEl=document.getElementById('feat-dots');
-  if(pg>1){var dh='';for(var i=0;i<pg;i++)dh+='<button class="feat-dot" onclick="fPg='+i+';buildFeat()" style="background:'+(i===fPg?'#F97316':'#d4cfc4')+'"></button>';dotsEl.innerHTML=dh;dotsEl.style.display='flex';}else{dotsEl.style.display='none';}
-  var sl=f.slice(fPg*FPP,(fPg+1)*FPP),g=document.getElementById('feat-grid');
-  if(!sl.length){g.innerHTML='<div style="padding:20px;color:var(--mu);font-style:italic;">No featured events yet.</div>';return;}
-  g.innerHTML=sl.map(function(e){
-    var p=pd(e.date);
-    return '<div class="feat-card">'+(e.is_aic?'<div class="feat-aic">★ AI COLLECTIVE EVENT</div>':'')+
-      '<div class="feat-name">'+x(e.name)+'</div>'+
-      '<div class="feat-meta">📅 '+MNS[p.m]+' '+p.d+', '+p.y+' · '+x(e.time)+'<br>📍 '+x(e.venue)+'</div>'+
-      '<div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center;">'+
-        '<span class="badge b-city">'+x(e.city)+'</span>'+
-        '<span class="badge '+(e.cost==='Free'?'b-free':'b-paid')+'">'+x(e.cost)+'</span>'+
-        '<span class="badge" style="background:'+etBg(e.type)+';color:#fff;">'+etLbl(e.type)+'</span>'+
-      '</div>'+
-      '<div class="feat-reg-row"><a href="'+x(e.registration_url)+'" target="_blank" rel="noopener" class="badge" style="background:#0076db;color:#fff;padding:5px 14px;">Register →</a></div>'+
-    '</div>';
-  }).join('');
-}
-
-function buildEvMap(){var m={};EVENTS.forEach(function(e){var p=pd(e.date);if(p.y===calY&&p.m===calM){if(!m[p.d])m[p.d]=[];m[p.d].push(e);}});return m;}
-function calShift(d){calM+=d;if(calM<0){calM=11;calY--;}if(calM>11){calM=0;calY++;}buildCal();}
-function buildCal(){
-  document.getElementById('cal-lbl').textContent=MN[calM]+' '+calY;
-  var fd=new Date(calY,calM,1).getDay(),dim=new Date(calY,calM+1,0).getDate(),dip=new Date(calY,calM,0).getDate();
-  var em=buildEvMap(),h='';
-  for(var i=fd-1;i>=0;i--)h+='<div class="cal-cell oth"><span class="cal-dn">'+(dip-i)+'</span></div>';
-  for(var d=1;d<=dim;d++){
-    var isT=(calY===TY&&calM===TM&&d===TD),evs=em[d]||[];
-    var cls='cal-cell'+(isT?' tod':evs.length?' hev':'');
-    var clk=evs.length?' onclick="openPop('+calY+','+calM+','+d+')"':'';
-    var dots=evs.map(function(ev){return'<span class="cal-dot" style="background:'+etBg(ev.type)+'" title="'+x(ev.name)+'"></span>';}).join('');
-    h+='<div class="'+cls+'"'+clk+'><span class="cal-dn'+(isT?' tnm':'')+'">'+d+(isT?'◆':'')+'</span>'+(evs.length?'<div class="cal-dots">'+dots+'</div>':'')+'</div>';
-  }
-  var used=fd+dim,rem=7-(used%7);if(rem<7)for(var d=1;d<=rem;d++)h+='<div class="cal-cell oth"><span class="cal-dn">'+d+'</span></div>';
-  document.getElementById('cal-grid').innerHTML=h;
-  var seen={},lh='';
-  EVENTS.forEach(function(e){var p=pd(e.date);if(p.y===calY&&p.m===calM&&!seen[e.type]){seen[e.type]=true;lh+='<span style="display:flex;align-items:center;gap:3px;"><span style="width:8px;height:8px;border-radius:50%;background:'+etBg(e.type)+';display:inline-block;"></span>'+etLbl(e.type)+'</span>';}});
-  document.getElementById('cal-leg').innerHTML=lh+'<button class="cal-exp-btn" onclick="openExp()">⛶ Expand Calendar</button>';
-}
-
-function openPop(y,m,d){
-  var evs=EVENTS.filter(function(e){var p=pd(e.date);return p.y===y&&p.m===m&&p.d===d;});
-  if(!evs.length)return;
-  document.getElementById('pop-date').textContent=DN[new Date(y,m,d).getDay()]+', '+MN[m]+' '+d+', '+y;
-  document.getElementById('pop-sub').textContent=evs.length+' event'+(evs.length!==1?'s':'');
-  document.getElementById('pop-body').innerHTML=evs.map(function(e){
-    return '<div class="pop-ev">'+(e.is_aic?'<div style="font-size:9px;font-weight:900;color:var(--or);letter-spacing:.1em;margin-bottom:4px;">★ AI COLLECTIVE EVENT</div>':'')+
-      '<div class="pop-en">'+x(e.name)+'</div>'+
-      '<div class="pop-mt">🕐 '+x(e.time)+'&nbsp;&nbsp;📍 '+x(e.venue)+', '+x(e.city)+'</div>'+
-      '<div class="pop-bgs"><span class="badge '+(e.cost==='Free'?'b-free':'b-paid')+'">'+x(e.cost)+'</span><span class="badge" style="background:'+etBg(e.type)+';color:#fff;">'+etLbl(e.type)+'</span></div>'+
-      '<a href="'+x(e.registration_url)+'" target="_blank" rel="noopener" class="pop-reg">REGISTER →</a></div>';
-  }).join('');
-  document.getElementById('day-ov').classList.add('on');
-}
-function closePop(){document.getElementById('day-ov').classList.remove('on');}
-
-function openExp(){buildExp();document.getElementById('cal-exp').classList.add('on');}
-function closeExp(){document.getElementById('cal-exp').classList.remove('on');}
-function buildExp(){
-  document.getElementById('cal-exp-lbl').textContent=MN[calM]+' '+calY;
-  var fd=new Date(calY,calM,1).getDay(),dim=new Date(calY,calM+1,0).getDate(),dip=new Date(calY,calM,0).getDate();
-  var em=buildEvMap(),h='';
-  for(var i=fd-1;i>=0;i--)h+='<div class="cal-exp-cell oth"><span class="cal-exp-dn" style="color:#ccc;">'+(dip-i)+'</span></div>';
-  for(var d=1;d<=dim;d++){
-    var isT=(calY===TY&&calM===TM&&d===TD),evs=em[d]||[];
-    var cls='cal-exp-cell'+(isT?' tod':evs.length?' hev':'');
-    h+='<div class="'+cls+'"><div class="cal-exp-dn"'+(isT?' style="color:var(--or)"':'')+'>'+d+(isT?'◆':'')+'</div>'+
-      evs.map(function(ev){return'<div class="cal-exp-ev"><span class="cal-exp-dot" style="background:'+etBg(ev.type)+'"></span><div><a href="'+x(ev.registration_url)+'" target="_blank" rel="noopener" class="cal-exp-lnk">'+x(ev.name)+'</a><div class="cal-exp-sm">'+x(ev.time)+' · '+x(ev.venue)+'</div></div></div>';}).join('')+
-    '</div>';
-  }
-  var used=fd+dim,rem=7-(used%7);if(rem<7)for(var d=1;d<=rem;d++)h+='<div class="cal-exp-cell oth"><span class="cal-exp-dn" style="color:#ccc;">'+d+'</span></div>';
-  document.getElementById('cal-exp-grid').innerHTML=h;
-  var seen={},lh='';
-  Object.keys(ET).forEach(function(k){if(!seen[k]){seen[k]=true;lh+='<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:'+etBg(k)+';display:inline-block;"></span>'+etLbl(k)+'</span>';}});
-  document.getElementById('cal-exp-leg').innerHTML=lh;
-}
-
-function buildList(){
-  var el=document.getElementById('ev-list');
-  if(!vis.length){el.innerHTML='<div class="no-ev">No events match. Try a different filter!</div>';return;}
-  el.innerHTML=vis.map(function(e){
-    var p=pd(e.date),dow=new Date(p.y,p.m,p.d).getDay();
-    return '<div class="ev-row'+(e.is_aic?' aic-r':'')+'">'+
-      '<div class="ev-dc '+(e.is_aic?'aic-c':'oth-c')+'">'+
-        '<div class="ev-day" style="color:'+(e.is_aic?'var(--or)':'var(--bl)')+'">'+p.d+'</div>'+
-        '<div class="ev-dn">'+DN[dow]+'</div><div class="ev-mo">'+MNS[p.m]+'</div>'+
-      '</div>'+
-      '<div>'+
-        (e.is_aic?'<div class="ev-aic-lbl">★ AI COLLECTIVE EVENT</div>':'')+
-        '<div class="ev-nm"><a href="'+x(e.website)+'" target="_blank" rel="noopener">'+x(e.name)+'</a></div>'+
-        '<div class="ev-mt"><span>🕐 '+x(e.time)+'</span><span>📍 '+x(e.venue)+'</span>'+(e.attendees>0?'<span>👥 '+e.attendees.toLocaleString()+'</span>':'')+'</div>'+
-        '<div class="ev-desc">'+x(e.description)+'</div>'+
-        '<div class="ev-r1">'+
-          '<span class="badge b-city">'+x(e.city)+'</span>'+
-          '<span class="badge" style="background:'+etBg(e.type)+';color:#fff;">'+etLbl(e.type)+'</span>'+
-          '<span class="badge '+(e.cost==='Free'?'b-free':'b-paid')+'">'+x(e.cost)+'</span>'+
-          (e.url_verified?'<span class="badge b-ver">✓ Verified</span>':'')+
-        '</div>'+
-        '<div class="ev-r2">'+
-          '<a href="'+x(e.website)+'" target="_blank" rel="noopener" class="badge b-org">'+x(e.organizer)+'</a>'+
-          '<div class="ev-reg-w">'+(e.is_aic?'<img src="'+AIC_ICON+'" class="aic-ico" alt="AIC">':'')+
-            '<a href="'+x(e.registration_url)+'" target="_blank" rel="noopener" class="ev-reg">Register</a>'+
-          '</div>'+
-        '</div>'+
-      '</div>'+
-    '</div>';
-  }).join('');
-}
-
-function submitEv(){
-  var url=document.getElementById('f-url').value.trim(),nm=document.getElementById('f-nm').value.trim(),dt=document.getElementById('f-dt').value;
-  if(!url||!nm||!dt){alert('Please fill in Event URL, Name, and Date.');return;}
-  var org=document.getElementById('f-org').value.trim(),loc=document.getElementById('f-loc').value.trim(),desc=document.getElementById('f-desc').value.trim();
-  var subj=encodeURIComponent('New ATL AI Event: '+nm);
-  var body=encodeURIComponent('Event: '+nm+'\nURL: '+url+'\nDate: '+dt+'\nOrganizer: '+(org||'N/A')+'\nVenue: '+(loc||'N/A')+'\nDescription: '+(desc||'N/A'));
-  window.location.href='mailto:mark@aicollective.com?subject='+subj+'&body='+body;
-  document.getElementById('sub-form').style.display='none';
-  document.getElementById('f-desc').style.display='none';
-  document.getElementById('sub-ok').style.display='block';
-}
-
-function openPin(){document.getElementById('pin-in').value='';document.getElementById('pin-er').style.display='none';document.getElementById('pin-ov').classList.add('on');setTimeout(function(){document.getElementById('pin-in').focus();},80);}
-function closePin(){document.getElementById('pin-ov').classList.remove('on');}
-function checkPin(){
-  if(document.getElementById('pin-in').value==='0110'){closePin();mgrOn=true;document.getElementById('mgr-stat').textContent='Last updated: '+LAST_UPDATED;document.getElementById('mgr-cnt').textContent=vis.length+' events';document.getElementById('mgr-panel').classList.add('on');}
-  else{document.getElementById('pin-er').style.display='block';document.getElementById('pin-in').value='';document.ge
+</body>
+</html>
