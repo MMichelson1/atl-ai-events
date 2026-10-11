@@ -53,6 +53,20 @@
  .day-panel .day-meta { font-size: 12px; color: #666; margin-top: 2px; }
  .state-head { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #111; border-bottom: 2px solid var(--aic-orange); padding-bottom: 6px; margin: 28px 0 14px; }
  .no-events { background: #fff; border: 1px dashed #ccc; border-radius: 12px; padding: 20px; text-align: center; color: #999; font-size: 14px; margin-bottom: 14px; }
+ .share-btn { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 9px 14px; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+ .share-btn:hover { border-color: var(--aic-orange); color: var(--aic-orange); }
+ .dot-legend { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+ .dot-legend.free { background: var(--free-green); }
+ .dot-legend.paid { background: #111; }
+ .dot-legend.tba { background: #bbb; }
+ .cal-dot.tba { background: #bbb; }
+ .newsletter-signup { background: #111; color: #fff; border-radius: 16px; padding: 28px 24px; margin-top: 32px; text-align: center; }
+ .newsletter-signup h3 { margin: 0 0 8px; font-size: 20px; }
+ .newsletter-signup h3 .accent { color: var(--aic-orange); }
+ .newsletter-signup p { color: #ccc; font-size: 14px; margin: 0 0 16px; }
+ .newsletter-signup .signup-row { display: flex; gap: 8px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+ .newsletter-signup input[type="email"] { flex: 2 1 200px; padding: 12px 14px; font-size: 15px; border: 1px solid #444; border-radius: 10px; background: #222; color: #fff; }
+ .newsletter-signup a.signup-btn { display: inline-block; background: var(--aic-orange); color: #fff; font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: 10px; font-size: 15px; }
  .event { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; }
  .event.aic { border-left: 5px solid var(--aic-orange); background: var(--aic-orange-light); }
  .event h3 { margin: 0 0 6px; font-size: 18px; }
@@ -78,9 +92,11 @@
  </header>
 
  <div class="legend">
- <span><span class="swatch"></span><strong>Orange</strong> = organized by the AI Collective</span>
- <span><span class="badge badge-free">FREE</span> no cost to attend</span>
- <span><span class="badge badge-paid">$</span> ticketed event</span>
+ <span><span class="swatch"></span><strong>Orange</strong> = AI Collective event</span>
+ <span><span class="dot-legend free"></span>Free event</span>
+ <span><span class="dot-legend paid"></span>Paid event</span>
+ <span><span class="dot-legend tba"></span>Cost TBA</span>
+ <span>All events are in-person.</span>
  </div>
 
  <div class="controls">
@@ -88,6 +104,7 @@
  <select id="cat" aria-label="Filter by category"><option value="">All categories</option></select>
  <select id="org" aria-label="Filter by organizer"><option value="">All organizers</option></select>
  <label class="free-toggle"><input type="checkbox" id="freeOnly"> Free only</label>
+ <button class="share-btn" id="shareBtn">Share</button>
  <span class="count" id="count"></span>
  </div>
 
@@ -106,6 +123,16 @@
  <h2>All other events</h2>
  <div id="stateEvents"></div>
 
+ <!-- TODO: replace with real newsletter signup URL -->
+ <section class="newsletter-signup" id="newsletter-signup">
+ <h3>Get the Sunday roundup <span class="accent">·</span> Southeast AI events in your inbox</h3>
+ <p>One email a week. Every in-person AI event across the Southeast.</p>
+ <div class="signup-row">
+ <input type="email" id="nlEmail" placeholder="you@example.com" aria-label="Email address">
+ <a class="signup-btn" href="#newsletter-signup">Subscribe</a>
+ </div>
+ </section>
+
  <details class="embed">
  <summary>Embed this calendar on your website</summary>
  <p style="font-size:14px;color:#555;">Paste this snippet wherever you want the calendar to render. It always shows the latest version - no updates needed on your end.</p>
@@ -116,6 +143,8 @@
 </div>
 
 <script>
+// IN-PERSON EVENTS ONLY: every entry here must have a real physical venue + city.
+// Do not add online/virtual-only events; they dilute in-person registrations.
 const EVENTS = [
  {
  "name": "Coffee/Lunch + AI Chats (AI Collective Chattanooga)",
@@ -2230,7 +2259,8 @@ function stateCode(e) { const p = e.city.split(","); return p.length > 1 ? p[1].
 function dotClass(e) {
  if (e.is_aic) return "aic";
  if (e.free) return "free";
- return "paid";
+ if (e.cost && e.cost !== "TBA") return "paid";
+ return "tba";
 }
 function eventCard(e) {
  return '<article class="event' + (e.is_aic ? " aic" : "") + '">' +
@@ -2331,6 +2361,16 @@ function render() {
  });
  document.getElementById("calPrev").addEventListener("click", () => { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } render(); });
  document.getElementById("calNext").addEventListener("click", () => { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } render(); });
+ document.getElementById("shareBtn").addEventListener("click", async () => {
+ const btn = document.getElementById("shareBtn");
+ const shareData = { title: document.title, text: "Southeast AI events, curated by the AI Collective", url: location.href };
+ if (navigator.share) { try { await navigator.share(shareData); } catch (err) {} return; }
+ try {
+ await navigator.clipboard.writeText(location.href);
+ btn.textContent = "Link copied!";
+ } catch (err) { btn.textContent = "Copy: " + location.href; }
+ setTimeout(() => { btn.textContent = "Share"; }, 2500);
+ });
  document.getElementById("updated-line").textContent = "Updated October 11, 2026 · 114 events across 8 states · New events added every Sunday.";
  const now = new Date(); calYear = now.getFullYear(); calMonth = now.getMonth(); selectedIso = isoToday();
  render();
