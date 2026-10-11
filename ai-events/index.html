@@ -26,17 +26,33 @@
  .controls label.free-toggle { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 9px 12px; cursor: pointer; }
  .controls .count { font-size: 13px; color: #666; margin-left: auto; }
  h2 { font-size: 22px; margin: 32px 0 12px; }
- .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
- .day-col { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 8px; min-height: 110px; font-size: 12px; }
- .day-col .dow { font-weight: 700; font-size: 11px; text-transform: uppercase; color: #888; }
- .day-col .dnum { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
- .chip { display: block; border-radius: 8px; padding: 6px 8px; margin-bottom: 6px; font-size: 12px; line-height: 1.3; text-decoration: none; color: #1a1a1a; background: #f4f4f4; border: 1px solid #e0e0e0; }
- .chip:hover { border-color: #bbb; }
- .chip.aic { background: var(--aic-orange-light); border: 1px solid var(--aic-orange); }
- .chip .mini-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 999px; margin-top: 4px; }
- .chip .mini-free { background: #e8f7ee; color: var(--free-green); }
- .chip .mini-paid { background: #111; color: #fff; }
- .chip .mini-tba { background: #eee; color: #777; }
+ .cal-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+ .cal-nav button { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 8px 14px; font-size: 14px; font-weight: 700; cursor: pointer; }
+ .cal-nav button:hover { border-color: var(--aic-orange); color: var(--aic-orange); }
+ .cal-nav .cal-label { font-size: 18px; font-weight: 700; flex: 1; text-align: center; }
+ .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 12px; }
+ .cal-dow { font-weight: 700; font-size: 11px; text-transform: uppercase; color: #888; text-align: center; padding: 4px 0; }
+ .cal-cell { min-height: 62px; border-radius: 8px; padding: 4px 6px; font-size: 13px; cursor: pointer; border: 1px solid transparent; }
+ .cal-cell:hover { background: #f4f4f4; }
+ .cal-cell.blank { visibility: hidden; cursor: default; }
+ .cal-cell .dnum { font-weight: 700; }
+ .cal-cell.today .dnum { background: var(--aic-orange); color: #fff; border-radius: 50%; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; }
+ .cal-cell.selected { border-color: var(--aic-orange); background: var(--aic-orange-light); }
+ .cal-dots { display: flex; gap: 3px; margin-top: 4px; flex-wrap: wrap; align-items: center; }
+ .cal-dot { width: 8px; height: 8px; border-radius: 50%; }
+ .cal-dot.aic { background: var(--aic-orange); }
+ .cal-dot.free { background: var(--free-green); }
+ .cal-dot.paid { background: #111; }
+ .cal-more { font-size: 10px; color: #888; }
+ .day-panel { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px 18px; margin-top: 12px; }
+ .day-panel h3 { margin: 0 0 6px; font-size: 16px; }
+ .day-panel .day-ev { padding: 8px 0; border-top: 1px solid #f0f0f0; font-size: 14px; line-height: 1.45; }
+ .day-panel .day-ev:first-of-type { border-top: none; }
+ .day-panel .day-ev a { color: inherit; font-weight: 600; text-decoration: none; }
+ .day-panel .day-ev a:hover { text-decoration: underline; }
+ .day-panel .day-meta { font-size: 12px; color: #666; margin-top: 2px; }
+ .state-head { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #111; border-bottom: 2px solid var(--aic-orange); padding-bottom: 6px; margin: 28px 0 14px; }
+ .no-events { background: #fff; border: 1px dashed #ccc; border-radius: 12px; padding: 20px; text-align: center; color: #999; font-size: 14px; margin-bottom: 14px; }
  .event { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; }
  .event.aic { border-left: 5px solid var(--aic-orange); background: var(--aic-orange-light); }
  .event h3 { margin: 0 0 6px; font-size: 18px; }
@@ -50,7 +66,7 @@
  details.embed summary { cursor: pointer; font-weight: 700; font-size: 15px; }
  details.embed code { display: block; background: #111; color: #d7ffcf; font-size: 12px; padding: 14px; border-radius: 8px; margin-top: 12px; white-space: pre-wrap; word-break: break-all; }
  footer { margin-top: 32px; font-size: 13px; color: #888; text-align: center; }
- @media (max-width: 700px) { .week-grid { grid-template-columns: repeat(2, 1fr); } }
+ @media (max-width: 700px) { .cal-cell { min-height: 46px; font-size: 12px; } }
 </style>
 </head>
 <body>
@@ -75,11 +91,20 @@
  <span class="count" id="count"></span>
  </div>
 
- <h2>This week at a glance</h2>
- <div class="week-grid" id="weekGrid"></div>
+ <h2>Events calendar</h2>
+ <div class="cal-nav">
+ <button id="calPrev" aria-label="Previous month">&larr; Prev</button>
+ <div class="cal-label" id="calLabel"></div>
+ <button id="calNext" aria-label="Next month">Next &rarr;</button>
+ </div>
+ <div class="cal-grid" id="calGrid"></div>
+ <div class="day-panel" id="dayPanel" hidden></div>
 
- <h2>All upcoming events</h2>
- <div id="events"></div>
+ <h2>AI Collective events</h2>
+ <div id="aicEvents"></div>
+
+ <h2>All other events</h2>
+ <div id="stateEvents"></div>
 
  <details class="embed">
  <summary>Embed this calendar on your website</summary>
@@ -2199,17 +2224,16 @@ function sortedEvents(list) {
  const byDay = (x, y) => (x.days[0] < y.days[0] ? -1 : x.days[0] > y.days[0] ? 1 : 0);
  return aic.sort(byDay).concat(other.sort(byDay));
 }
-function render() {
- const q = document.getElementById("q").value.trim().toLowerCase();
- const cat = document.getElementById("cat").value;
- const org = document.getElementById("org").value;
- const freeOnly = document.getElementById("freeOnly").checked;
- const list = sortedEvents(EVENTS.filter(e => matches(e, q, cat, org, freeOnly)));
- document.getElementById("count").textContent = "Showing " + list.length + " of " + EVENTS.length + " events";
- const box = document.getElementById("events");
- if (!list.length) { box.innerHTML = '<div class="no-results">No events match your filters. Try clearing the search.</div>'; return; }
- box.innerHTML = list.map(e =>
- '<article class="event' + (e.is_aic ? " aic" : "") + '">' +
+const STATE_NAMES = { AL: "Alabama", FL: "Florida Panhandle", GA: "Georgia", KY: "Kentucky", MS: "Mississippi", NC: "North Carolina", SC: "South Carolina", TN: "Tennessee" };
+const STATE_ORDER = ["AL", "FL", "GA", "KY", "MS", "NC", "SC", "TN"];
+function stateCode(e) { const p = e.city.split(","); return p.length > 1 ? p[1].trim() : ""; }
+function dotClass(e) {
+ if (e.is_aic) return "aic";
+ if (e.free) return "free";
+ return "paid";
+}
+function eventCard(e) {
+ return '<article class="event' + (e.is_aic ? " aic" : "") + '">' +
  '<h3><a href="' + e.url + '" target="_blank" rel="noopener">' + e.name + "</a>" +
  (e.is_aic ? ' <span class="badge badge-aic">AI COLLECTIVE</span>' : "") + badge(e) + "</h3>" +
  '<p class="meta">📅 ' + e.date + " · " + e.time + "</p>" +
@@ -2217,26 +2241,82 @@ function render() {
  '<p class="meta">👥 Organized by ' + e.organizer + " · " + (CAT_LABELS[e.type] || e.type) + "</p>" +
  '<p class="desc">' + e.desc + ' <a href="' + e.url + '" target="_blank" rel="noopener">Details &amp; registration →</a></p>' +
  (e.topics ? '<p class="topics">Topics: ' + e.topics + "</p>" : "") +
- "</article>"
- ).join("");
+ "</article>";
 }
-function renderWeek() {
- const now = new Date();
- const sun = new Date(now); sun.setDate(now.getDate() - now.getDay()); sun.setHours(0,0,0,0);
- const grid = document.getElementById("weekGrid");
- const dows = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
- let html = "";
- for (let i = 0; i < 7; i++) {
- const d = new Date(sun); d.setDate(sun.getDate() + i);
- const iso = d.toISOString().slice(0,10);
- const evs = sortedEvents(EVENTS.filter(e => e.days.includes(iso)));
- html += '<div class="day-col"><div class="dow">' + dows[i] + '</div><div class="dnum">' + d.getDate() + "</div>";
- evs.forEach(e => {
- html += '<a class="chip' + (e.is_aic ? " aic" : "") + '" href="' + e.url + '" target="_blank" rel="noopener">' + e.name + "<br>" + miniBadge(e) + "</a>";
- });
+const byDay = (x, y) => (x.days[0] < y.days[0] ? -1 : x.days[0] > y.days[0] ? 1 : 0);
+let calYear, calMonth, selectedIso;
+function isoToday() { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+function isoLabel(iso) { return new Date(iso + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }); }
+function dayEvents(filtered, iso) { return filtered.filter(e => e.days.includes(iso)).sort(byDay); }
+function renderCalendar(filtered) {
+ const dots = {};
+ filtered.forEach(e => e.days.forEach(d => { (dots[d] = dots[d] || []).push(e); }));
+ const label = document.getElementById("calLabel");
+ label.textContent = new Date(calYear, calMonth, 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+ const today = isoToday();
+ const first = new Date(calYear, calMonth, 1).getDay();
+ const dim = new Date(calYear, calMonth + 1, 0).getDate();
+ const dows = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+ let html = dows.map(d => '<div class="cal-dow">' + d + "</div>").join("");
+ for (let i = 0; i < first; i++) html += '<div class="cal-cell blank"></div>';
+ for (let d = 1; d <= dim; d++) {
+ const iso = calYear + "-" + String(calMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+ const evs = dots[iso] || [];
+ const cls = "cal-cell" + (iso === today ? " today" : "") + (iso === selectedIso ? " selected" : "");
+ html += '<div class="' + cls + '" data-iso="' + iso + '"><span class="dnum">' + d + "</span>";
+ if (evs.length) {
+ const shown = evs.slice(0, 3);
+ html += '<div class="cal-dots">' + shown.map(e => '<span class="cal-dot ' + dotClass(e) + '"></span>').join("");
+ if (evs.length > 3) html += '<span class="cal-more">+' + (evs.length - 3) + "</span>";
  html += "</div>";
  }
+ html += "</div>";
+ }
+ const grid = document.getElementById("calGrid");
  grid.innerHTML = html;
+ grid.querySelectorAll(".cal-cell[data-iso]").forEach(cell => {
+ cell.addEventListener("click", () => { selectedIso = cell.getAttribute("data-iso"); renderCalendar(filtered); renderDayPanel(filtered); });
+ });
+}
+function renderDayPanel(filtered) {
+ const panel = document.getElementById("dayPanel");
+ if (!selectedIso) { panel.hidden = true; panel.innerHTML = ""; return; }
+ const evs = dayEvents(filtered, selectedIso);
+ panel.hidden = false;
+ let html = "<h3>" + isoLabel(selectedIso) + " · " + evs.length + (evs.length === 1 ? " event" : " events") + "</h3>";
+ if (!evs.length) html += '<div style="font-size:14px;color:#888;">No events on this date.</div>';
+ evs.forEach(e => {
+ html += '<div class="day-ev"><a href="' + e.url + '" target="_blank" rel="noopener">' + e.name + "</a>" +
+ (e.is_aic ? ' <span class="badge badge-aic">AI COLLECTIVE</span>' : "") + badge(e) +
+ '<div class="day-meta">' + e.time + " · " + e.city + "</div></div>";
+ });
+ panel.innerHTML = html;
+}
+function render() {
+ const q = document.getElementById("q").value.trim().toLowerCase();
+ const cat = document.getElementById("cat").value;
+ const org = document.getElementById("org").value;
+ const freeOnly = document.getElementById("freeOnly").checked;
+ const filtered = EVENTS.filter(e => matches(e, q, cat, org, freeOnly));
+ document.getElementById("count").textContent = "Showing " + filtered.length + " of " + EVENTS.length + " events";
+ renderCalendar(filtered);
+ renderDayPanel(filtered);
+ const aicList = filtered.filter(e => e.is_aic).sort(byDay);
+ const aicBox = document.getElementById("aicEvents");
+ aicBox.innerHTML = aicList.length ? aicList.map(eventCard).join("")
+ : '<div class="no-events">No AI Collective events match your filters.</div>';
+ let stateHtml = "";
+ STATE_ORDER.forEach(code => {
+ const list = filtered.filter(e => !e.is_aic && stateCode(e) === code).sort(byDay);
+ stateHtml += '<div class="state-head">' + STATE_NAMES[code] + "</div>";
+ stateHtml += list.length ? list.map(eventCard).join("")
+ : '<div class="no-events">No events match in ' + STATE_NAMES[code] + ".</div>";
+ });
+ const unknown = filtered.filter(e => !e.is_aic && !STATE_ORDER.includes(stateCode(e))).sort(byDay);
+ if (unknown.length) {
+ stateHtml += '<div class="state-head">Other locations</div>' + unknown.map(eventCard).join("");
+ }
+ document.getElementById("stateEvents").innerHTML = stateHtml;
 }
 (function init() {
  const cats = [...new Set(EVENTS.map(e => e.type))].sort();
@@ -2249,8 +2329,11 @@ function renderWeek() {
  document.getElementById(id).addEventListener("input", render);
  document.getElementById(id).addEventListener("change", render);
  });
+ document.getElementById("calPrev").addEventListener("click", () => { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } render(); });
+ document.getElementById("calNext").addEventListener("click", () => { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } render(); });
  document.getElementById("updated-line").textContent = "Updated October 11, 2026 · 114 events across 8 states · New events added every Sunday.";
- renderWeek(); render();
+ const now = new Date(); calYear = now.getFullYear(); calMonth = now.getMonth(); selectedIso = isoToday();
+ render();
 })();
 </script>
 </body>
