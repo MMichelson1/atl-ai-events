@@ -117,11 +117,17 @@
 </head>
 <body>
 <div class="wrap">
- <header class="hero">
- <h1>Southeast AI Events <span class="accent">·</span> Curated by the AI Collective</h1>
- <p>In-person AI meetups, workshops, hackathons &amp; conferences across Kentucky, Tennessee, Alabama, Georgia, Mississippi, North Florida &amp; the Carolinas.</p>
+ <header class="hero" style="background:none;padding:0;box-shadow:none;">
+ <a href="https://luma.com/aicatl" target="_blank" rel="noopener"><img src="https://mmichelson1.github.io/atl-ai-events/newsletter-hero.jpg" alt="Upcoming In-Person AI Events - Curated by the AI Collective" style="width:100%;height:auto;display:block;border-radius:16px;"></a>
+ <p style="margin:10px 4px 0;">In-person AI meetups, workshops, hackathons &amp; conferences across Kentucky, Tennessee, Alabama, Georgia, Mississippi, Florida &amp; the Carolinas.</p>
  <p id="updated-line">Updated weekly.</p>
  </header>
+
+ <div style="background:#111;border-radius:12px;padding:18px 20px;margin:0 0 8px;text-align:center;">
+ <div style="font-size:15px;font-weight:bold;color:#fff;">Never miss an event</div>
+ <div style="font-size:13px;color:#ccc;margin:6px 0 12px;">Follow our chapter calendar to be updated on events as they're posted.</div>
+ <a href="https://luma.com/aicatl" target="_blank" rel="noopener" style="display:inline-block;background:#FF6B00;color:#fff;font-weight:700;text-decoration:none;padding:12px 28px;border-radius:10px;font-size:15px;">Follow the AI Collective calendar</a>
+ </div>
 
  <div class="legend">
  <span><span class="swatch"></span><strong>Orange</strong> = AI Collective event</span>
@@ -151,10 +157,7 @@
 
  <h2>Explore by city</h2>
  <div class="city-buttons" id="cityButtons"></div>
- <div class="city-map-layout">
- <div class="city-map-wrap"><iframe id="cityMap" title="Google Map of the selected city" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
- <div class="city-events" id="cityEvents"></div>
- </div>
+ <div class="city-events" id="cityEvents" style="margin-top:12px;"></div>
 
  <h2>AI Collective events</h2>
  <div id="aicEvents"></div>
@@ -2378,7 +2381,6 @@ function renderCities(filtered) {
  const btnBox = document.getElementById("cityButtons");
  if (!cities.length) {
  btnBox.innerHTML = "";
- document.getElementById("cityMap").removeAttribute("src");
  document.getElementById("cityEvents").innerHTML = '<div style="font-size:14px;color:#888;">No cities match your filters.</div>';
  return;
  }
@@ -2395,8 +2397,6 @@ function renderCities(filtered) {
  btnBox.querySelectorAll(".city-btn").forEach(btn => {
  btn.addEventListener("click", () => { selectedCity = btn.getAttribute("data-city"); renderCities(filtered); });
  });
- document.getElementById("cityMap").src =
- "https://maps.google.com/maps?q=" + encodeURIComponent(selectedCity) + "&z=11&output=embed";
  const cur = cities.filter(c => c.city === selectedCity)[0];
  const evBox = document.getElementById("cityEvents");
  let html = "<h3>" + selectedCity + " · " + cur.events.length + (cur.events.length === 1 ? " event" : " events") + "</h3>";
