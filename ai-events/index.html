@@ -212,6 +212,22 @@ const EVENTS = [
  "desc": "Morning coffee with the AI Collective crowd in Cumming. Casual conversation, all welcome."
  },
  {
+ "name": "AI Tasting Room (w/ The AI Collective Fayetteville)",
+ "date": "Wed, Oct 28",
+ "days": ["2026-10-28"],
+ "time": "6:00 - 8:00 PM ET",
+ "venue": "Fayetteville (venue on Luma listing)",
+ "city": "Fayetteville, GA",
+ "organizer": "The AI Collective",
+ "type": "social",
+ "free": true,
+ "cost": "FREE",
+ "url": "https://luma.com/aicatl",
+ "is_aic": true,
+ "topics": "AI community, happy hour",
+ "desc": "AI Collective Fayetteville happy hour: an AI tasting-room social hosted by The AI Collective with Myeasha and Linda Butler. Free; see the calendar for venue details."
+ },
+ {
  "name": "Meetup (w/ The AI Collective)",
  "date": "Thu, Nov 5",
  "days": ["2026-11-05"],
@@ -226,6 +242,22 @@ const EVENTS = [
  "is_aic": true,
  "topics": "AI community, networking",
  "desc": "AI Collective social meetup in Central Georgia."
+ },
+ {
+ "name": "Build Your First AI Agent with n8n | AI Collective x n8n Douglasville",
+ "date": "Mon, Nov 23",
+ "days": ["2026-11-23"],
+ "time": "6:30 - 8:30 PM ET",
+ "venue": "Douglasville (venue on Luma listing)",
+ "city": "Douglasville, GA",
+ "organizer": "The AI Collective",
+ "type": "workshop",
+ "free": true,
+ "cost": "FREE",
+ "url": "https://luma.com/aicatl",
+ "is_aic": true,
+ "topics": "AI agents, n8n, hands-on",
+ "desc": "Hands-on workshop: build your first AI agent with n8n, hosted by The AI Collective with Cheryl Tibbs and Mark Michelson. Free; see the calendar for venue details."
  },
  {
  "name": "Alabama Digital Government Summit 2026",
@@ -764,12 +796,12 @@ const EVENTS = [
  "city": "Sandy Springs, GA",
  "organizer": "Meredith Sommers",
  "type": "meetup",
- "free": false,
- "cost": "TBA",
+ "free": true,
+ "cost": "FREE",
  "url": "https://luma.com/i0vivyn9",
  "is_aic": false,
  "topics": "builders, AI community",
- "desc": "Builder-focused AI meetup listed on the AI Collective calendar. Organized by Meredith Sommers, not the AI Collective."
+ "desc": "Builder-focused AI meetup listed on the AI Collective calendar. Organized by Meredith Sommers, not the AI Collective. Free per the Luma listing."
  },
  {
  "name": "ATL AI Hackathon",
@@ -1867,7 +1899,7 @@ function render() {
  } catch (err) { btn.textContent = "Copy: " + location.href; }
  setTimeout(() => { btn.textContent = "Share"; }, 2500);
  });
- document.getElementById("updated-line").textContent = "Updated October 25, 2026 · 93 events across 8 states · New events added every Sunday.";
+ document.getElementById("updated-line").textContent = "Updated October 25, 2026 · 95 events across 8 states · New events added every Sunday.";
  const now = new Date(); calYear = now.getFullYear(); calMonth = now.getMonth(); selectedIso = isoToday();
  render();
 })();
