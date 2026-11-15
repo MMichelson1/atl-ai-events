@@ -58,7 +58,7 @@ Don't see your city here? If there's not a chapter in your area and you're inter
 
 What makes us unique is simple: in every chapter, there are people ready to help each other learn and use AI responsibly. Our organizers work with chapter leads to teach free classes, workshops, and socials.
 
-We host coffees, lunches, hikes, dinners, hackathons, and demo nights. If you're new to the AI Collective, come to an event. If you've been around for a while, we'd love to see you again, and bring a friend with you. Check our regional calendar to find an event near you, and be sure to [follow our regional calendar](https://luma.com/aicatl).
+We host coffees, lunches, hikes, dinners, hackathons, and demo nights. If you're new to the AI Collective, come to an event. If you've been around for a while, we'd love to see you again, and bring a friend with you. Check the [Luma calendar for the AI Collective Southeast region](https://luma.com/aicatl) to find an event near you, and be sure to follow it.
 
 There's a lot in the news about agents lately. They've been growing fast, with a lot of new ones out, all new ways to use the web. With all these new agents, we're dedicating two events in the next week to agents.
 
@@ -93,7 +93,7 @@ The AI Collective
 
 ## Never miss an event
 
-Follow our regional calendar to be updated on events as they're posted.
+Follow the Luma calendar for the AI Collective Southeast region to be updated on events as they're posted.
 
 [Follow the calendar on Luma](https://luma.com/aicatl)
 
