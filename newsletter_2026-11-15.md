@@ -2,9 +2,9 @@
 
 **November 15 through 25, 2026**
 
-[Click here to view interactive version](https://mmichelson1.github.io/atl-ai-events/newsletter_2026-11-15.html)
+[Click here to view the interactive newsletter online](https://mmichelson1.github.io/atl-ai-events/newsletter_2026-11-15.html)
 
-**[Browse the calendar](https://mmichelson1.github.io/atl-ai-events/ai-events/)** and pick a day to see what's coming up that day.
+**[Browse our calendar](https://mmichelson1.github.io/atl-ai-events/ai-events/)** - every event on our radar, including events beyond this week. Pick a day to see what's coming up that day.
 
 ## Events Not to Miss This Week
 
