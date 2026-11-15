@@ -60,7 +60,7 @@ What makes us unique is simple: in every chapter, there are people ready to help
 
 We host coffees, lunches, hikes, dinners, hackathons, and demo nights. If you're new to the AI Collective, come to an event. If you've been around for a while, we'd love to see you again, and bring a friend with you. Check our regional calendar to find an event near you, and be sure to [follow our regional calendar](https://luma.com/aicatl).
 
-There's a lot in the news about agents lately. They've been out since July, and people keep finding more of them and more ways to use them. With all that, we're dedicating two events in the next week to agents.
+There's a lot in the news about agents lately. They've been growing fast, with a lot of new ones out, all new ways to use the web. With all these new agents, we're dedicating two events in the next week to agents.
 
 [Agent Demo Night](https://luma.com/aic-at-11-18) is Wednesday, November 18, at Tech North in Alpharetta, hosted by organizer Nick Cybela. If you want to demo how you use your agent, [Sign up now to show off your agent](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform).
 
