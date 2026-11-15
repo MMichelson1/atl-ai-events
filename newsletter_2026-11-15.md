@@ -60,9 +60,11 @@ What makes us unique is simple: in every chapter, there are people ready to help
 
 We host coffees, lunches, hikes, dinners, hackathons, and demo nights. If you're new to the AI Collective, come to an event. If you've been around for a while, we'd love to see you again, and bring a friend with you. Check our regional calendar to find an event near you, and be sure to [follow our regional calendar](https://luma.com/aicatl).
 
-There's been a lot of news about agents lately, and we're having a special event this Wednesday to focus on the various new agents and discover what we're building and share what we're building. [Agent Demo Night](https://luma.com/aic-at-11-18) is Wednesday, November 18, at Tech North in Alpharetta. If you'd like to participate and give a demo on an agent you're using, [Sign up now to show off your agent](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform). You can find all the details here: [Agent Demo Night](https://luma.com/aic-at-11-18). 
+There's a lot in the news about agents lately. They've been out since July, and people keep finding more of them and more ways to use them. With all that, we're dedicating two events in the next week to agents.
 
-And Cheryl Tibbs is leading a session in Douglasville on using n8n to create agents: [Build Your First AI Agent with n8n](https://luma.com/aic-do-11-23), Monday, November 23.
+[Agent Demo Night](https://luma.com/aic-at-11-18) is Wednesday, November 18, at Tech North in Alpharetta, hosted by organizer Nick Cybela. If you want to demo how you use your agent, [Sign up now to show off your agent](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform).
+
+And Cheryl Tibbs has a workshop on creating your own agent using n8n in Douglasville on Monday, November 23: [Build Your First AI Agent with n8n](https://luma.com/aic-do-11-23).
 
 I'm working on two ideas for early next year: a job fair in January and a Pitch Night in March. If you're interested in helping with either one, get in touch.
 
