@@ -64,7 +64,7 @@ There's a lot in the news about agents lately. They've been growing fast, with a
 
 [Agent Demo Night](https://luma.com/aic-at-11-18) is Wednesday, November 18, at Tech North in Alpharetta, hosted by organizer Nick Cybela. If you want to demo how you use your agent, [Sign up now to show off your agent](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform).
 
-And Cheryl Tibbs has a workshop on creating your own agent using n8n in Douglasville on Monday, November 23: [Build Your First AI Agent with n8n](https://luma.com/aic-do-11-23).
+And Cheryl Tibbs is leading [Build Your First AI Agent with n8n](https://luma.com/aic-do-11-23) in Douglasville on Monday, November 23.
 
 I'm working on two ideas for early next year: a job fair in January and a Pitch Night in March. If you're interested in helping with either one, get in touch.
 
