@@ -4,9 +4,11 @@
 
 [Click here to view interactive version](https://mmichelson1.github.io/atl-ai-events/newsletter_2026-11-15.html)
 
+**[Browse the calendar](https://mmichelson1.github.io/atl-ai-events/ai-events/)** and pick a day to see what's coming up that day.
+
 ## Events Not to Miss This Week
 
-[**Agent Demo Night**](https://luma.com/aic-at-11-18) **Wednesday, November 18, Tech North, Alpharetta.** Six live agent demos, a same-task challenge, and pizza. Sign up to demo in advance.
+[**Agent Demo Night**](https://luma.com/aic-at-11-18) **Wednesday, November 18, Tech North, Alpharetta.** Six live agent demos, a same-task challenge, and pizza. [Register here](https://luma.com/aic-at-11-18) · [Sign up now to show off your agent](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform).
 
 [**Sandy Springs AI Meetup**](https://luma.com/aic-at-11-19-2) **Thursday, November 19, Mutation Brewing, Sandy Springs.** A relaxed social. First round is on CodeRabbit.
 
@@ -28,7 +30,7 @@ Hi everyone!
 
 Thanksgiving is almost here, and I'm grateful for this community. Thank you for showing up, for helping each other, and for making the AI Collective Southeast what it is. Currently, we're at 10,943 members, and we're growing fast for a grassroots community. We couldn't do it without you.
 
-I'm really grateful for the strong team of chapter leads who are creating communities for The AI Collective in these cities:
+I'm especially grateful for these chapter founders and leads who are creating and managing AI Collective chapters in their communities. Reach out to them if you're in their area and you'd like to get involved.
 
 - [400North](https://www.aicollective.com/chapters/400north) (Dawsonville, Dahlonega) - Jennifer Peters
 - [Athens](https://www.aicollective.com/chapters/ath) - Charlie Ye
@@ -37,7 +39,7 @@ I'm really grateful for the strong team of chapter leads who are creating commun
 - [Birmingham](https://www.aicollective.com/chapters/bham-al) - Daniel Walters
 - [Cartersville](https://www.aicollective.com/chapters/cartersvile) - DJ Patel
 - [Charlotte](https://www.aicollective.com/chapters/charlotte) - Sai Thummarakoti
-- [Chattanooga](https://www.aicollective.com/chapters/chattanooga) - Egbert Oostburg and John Gardner
+- [Chattanooga](https://www.aicollective.com/chapters/chattanooga) - John Gardner and Egbert Oostburg
 - [Cherokee County](https://www.aicollective.com/chapters/cher) - David Kennedy
 - [Columbia](https://www.aicollective.com/chapters/columbia) - Vinil Pasupuleti
 - [Douglasville](https://www.aicollective.com/chapters/douglasville) - Cheryl Tibbs
@@ -58,7 +60,7 @@ What makes us unique is simple: in every chapter, there are people ready to help
 
 We host coffees, lunches, hikes, dinners, hackathons, and demo nights. If you're new to the AI Collective, come to an event. If you've been around for a while, we'd love to see you again, and bring a friend with you. Check our regional calendar to find an event near you, and be sure to [follow our regional calendar](https://luma.com/aicatl).
 
-There's been a lot of news about agents lately, and we're having a special event this Wednesday to focus on the various new agents and discover what we're building and share what we're building. Agent Demo Night is Wednesday, November 18, at Tech North in Alpharetta. If you'd like to participate and give a demo on an agent you're using, please sign up here: [demo sign-up form](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform). You can find all the details here: [Agent Demo Night](https://luma.com/aic-at-11-18). 
+There's been a lot of news about agents lately, and we're having a special event this Wednesday to focus on the various new agents and discover what we're building and share what we're building. [Agent Demo Night](https://luma.com/aic-at-11-18) is Wednesday, November 18, at Tech North in Alpharetta. If you'd like to participate and give a demo on an agent you're using, [Sign up now to show off your agent](https://docs.google.com/forms/d/e/1FAIpQLSeQCM2aBB3E7C1pgnKqvG1WaWOPtCyrK_V60c05wrhvhYv5KA/viewform). You can find all the details here: [Agent Demo Night](https://luma.com/aic-at-11-18). 
 
 And Cheryl Tibbs is leading a session in Douglasville on using n8n to create agents: [Build Your First AI Agent with n8n](https://luma.com/aic-do-11-23), Monday, November 23.
 
@@ -66,7 +68,7 @@ I'm working on two ideas for early next year: a job fair in January and a Pitch 
 
 Quick update on our nonprofit: our 501(c)(3) has been incorporated. The next step is a board of directors and a meeting of the board to approve an operating agreement, and then we send that to the IRS to become fully our own 501(c)(3), instead of operating under a sponsored one. Looking forward to that so we can start applying for grants.
 
-And of course we need more volunteers. We're always seeking volunteers to join the team. If you're interested in helping to plan and host events in your area, go to the join the team link.
+We're always seeking volunteers to join the team. If you're interested in helping to plan and host events in your area, go to the join the team link.
 
 It could be a coffee, a hike, a lunch, anything. Make it simple. Maybe once a quarter. It's your event, and we'll help you put it together. [Join the team](https://aicollective.com/join-the-team)
 
