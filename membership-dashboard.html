@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Collective Southeast - Membership Counts</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; background: #f7f7f7; line-height: 1.5; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 20px 16px 40px; }
+  header { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 24px 20px; margin-bottom: 20px; }
+  header h1 { margin: 0 0 4px; font-size: 26px; line-height: 1.2; }
+  header h1 span { color: #FF6B00; }
+  header p { margin: 0; color: #ccc; font-size: 15px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .card { background: #fff; border: 1px solid #e5e5e5; border-top: 4px solid #FF6B00; border-radius: 10px; padding: 16px; }
+  .card .label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card .num { font-size: 30px; font-weight: 800; margin: 4px 0 2px; }
+  .card .delta { font-size: 13px; color: #15803D; font-weight: 600; }
+  .card .note { font-size: 12px; color: #888; }
+  section { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 18px 16px; margin-bottom: 20px; }
+  section h2 { margin: 0 0 12px; font-size: 19px; }
+  section h2 span { color: #FF6B00; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: right; padding: 9px 6px; border-bottom: 1px solid #eee; }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pos { color: #15803D; font-weight: 600; }
+  .muted { color: #888; font-size: 13px; }
+  .chart { width: 100%; height: auto; display: block; }
+  footer { font-size: 13px; color: #888; }
+  footer a { color: #FF6B00; font-weight: 700; }
+  a { color: #FF6B00; }
+  @media (max-width: 560px) {
+    .wrap { padding: 12px 12px 32px; }
+    header { padding: 18px 16px; border-radius: 10px; }
+    header h1 { font-size: 21px; }
+    .cards { grid-template-columns: 1fr; }
+    .card .num { font-size: 26px; }
+    section { padding: 14px 12px; }
+    table { font-size: 14px; }
+    th, td { padding: 7px 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AI Collective <span>Southeast</span></h1>
+    <p>Membership counts, checked weekly before the Sunday newsletter.</p>
+  </header>
+
+  <div class="cards" id="cards">
+    <div class="card">
+      <div class="label">Global members</div>
+      <div class="num" id="global-num">516,996</div>
+      <div class="delta" id="global-delta">+2,139 since Nov 15</div>
+      <div class="note">as of Nov 23, 2026</div>
+    </div>
+    <div class="card">
+      <div class="label">Southeast segment</div>
+      <div class="num" id="segment-num">6,277</div>
+      <div class="delta" id="segment-delta">+56 since Nov 15</div>
+      <div class="note">as of Nov 23, 2026</div>
+    </div>
+    <div class="card">
+      <div class="label">Region members</div>
+      <div class="num" id="region-num">6,425</div>
+      <div class="delta" id="region-delta">&nbsp;</div>
+      <div class="note">region home page, Nov 23, 2026</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Southeast segment <span>over time</span></h2>
+    <div id="chart"></div>
+    <p class="muted">Segment members on each check date. The chart grows as weekly checks are added.</p>
+  </section>
+
+  <section>
+    <h2>Check <span>history</span></h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Global</th><th>Segment</th><th>Change</th></tr>
+      </thead>
+      <tbody id="history"></tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>Counts are verified by hand on the AI Collective platform before each weekly newsletter send. Data source: <a href="membership-counts.json">membership-counts.json</a> (one row per check; a weekly job appends new rows). Region members come from the region home page and are not recorded every week.</p>
+  </footer>
+</div>
+
+<script>
+var fallback = [
+  { "date": "2026-11-15", "global_members": 514857, "southeast_segment": 6221, "region_members": null },
+  { "date": "2026-11-23", "global_members": 516996, "southeast_segment": 6277, "region_members": 6425 }
+];
+
+function fmt(n) { return n == null ? "\u2014" : n.toLocaleString("en-US"); }
+function prettyDate(s) {
+  var d = new Date(s + "T12:00:00");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+function render(checks) {
+  var latest = checks[checks.length - 1];
+  var prev = checks.length > 1 ? checks[checks.length - 2] : null;
+  document.getElementById("global-num").textContent = fmt(latest.global_members);
+  document.getElementById("segment-num").textContent = fmt(latest.southeast_segment);
+  document.getElementById("region-num").textContent = fmt(latest.region_members);
+  document.getElementById("global-delta").textContent = prev && prev.global_members != null
+    ? "+" + fmt(latest.global_members - prev.global_members) + " since " + prettyDate(prev.date) : "\u00a0";
+  document.getElementById("segment-delta").textContent = prev && prev.southeast_segment != null
+    ? "+" + fmt(latest.southeast_segment - prev.southeast_segment) + " since " + prettyDate(prev.date) : "\u00a0";
+  document.getElementById("region-delta").innerHTML = "&nbsp;";
+  var rows = "";
+  for (var i = checks.length - 1; i >= 0; i--) {
+    var c = checks[i], p = checks[i - 1];
+    var ch = (p && p.southeast_segment != null && c.southeast_segment != null)
+      ? '<span class="pos">+' + fmt(c.southeast_segment - p.southeast_segment) + "</span>" : "\u2014";
+    rows += "<tr><td>" + prettyDate(c.date) + "</td><td>" + fmt(c.global_members) + "</td><td>" + fmt(c.southeast_segment) + "</td><td>" + ch + "</td></tr>";
+  }
+  document.getElementById("history").innerHTML = rows;
+  // Simple bar chart of the segment count over time (inline SVG, no libraries).
+  var w = 680, h = 220, padL = 56, padB = 30, padT = 16;
+  var vals = checks.map(function (c) { return c.southeast_segment; });
+  var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+  var lo = Math.floor(min * 0.98), hi = Math.ceil(max * 1.005);
+  var bw = (w - padL - 20) / vals.length;
+  var svg = '<svg class="chart" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="Southeast segment members over time">';
+  svg += '<line x1="' + padL + '" y1="' + (h - padB) + '" x2="' + (w - 10) + '" y2="' + (h - padB) + '" stroke="#ddd"/>';
+  svg += '<text x="8" y="' + (padT + 4) + '" font-size="12" fill="#888">' + fmt(hi) + '</text>';
+  svg += '<text x="8" y="' + (h - padB + 4) + '" font-size="12" fill="#888">' + fmt(lo) + '</text>';
+  checks.forEach(function (c, i) {
+    var v = c.southeast_segment;
+    var barH = (v - lo) / (hi - lo) * (h - padB - padT);
+    var x = padL + 10 + i * bw + bw * 0.2, y = h - padB - barH;
+    svg += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + (bw * 0.6).toFixed(1) + '" height="' + barH.toFixed(1) + '" rx="4" fill="#FF6B00"/>';
+    svg += '<text x="' + (x + bw * 0.3).toFixed(1) + '" y="' + (y - 6).toFixed(1) + '" font-size="13" font-weight="700" fill="#1a1a1a" text-anchor="middle">' + fmt(v) + '</text>';
+    svg += '<text x="' + (x + bw * 0.3).toFixed(1) + '" y="' + (h - 10) + '" font-size="12" fill="#666" text-anchor="middle">' + prettyDate(c.date) + '</text>';
+  });
+  svg += "</svg>";
+  document.getElementById("chart").innerHTML = svg;
+}
+fetch("membership-counts.json")
+  .then(function (r) { return r.json(); })
+  .then(function (d) { render(d.checks); })
+  .catch(function () { render(fallback); });
+</script>
+</body>
+</html>
