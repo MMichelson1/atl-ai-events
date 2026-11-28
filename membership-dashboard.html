@@ -95,10 +95,12 @@
 <script>
 var fallback = [
   { "date": "2026-11-15", "global_members": 514857, "southeast_segment": 6221, "region_members": null },
-  { "date": "2026-11-23", "global_members": 516996, "southeast_segment": 6277, "region_members": 6425 }
+  { "date": "2026-11-23", "global_members": 516996, "southeast_segment": 6277, "region_members": 6425 },
+  { "date": "2026-11-28", "global_members": 517712, "southeast_segment": 2200, "region_members": 6441 }
 ];
 
 function fmt(n) { return n == null ? "\u2014" : n.toLocaleString("en-US"); }
+function signed(n) { return (n < 0 ? "\u2212" : "+") + fmt(Math.abs(n)); }
 function prettyDate(s) {
   var d = new Date(s + "T12:00:00");
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -110,15 +112,15 @@ function render(checks) {
   document.getElementById("segment-num").textContent = fmt(latest.southeast_segment);
   document.getElementById("region-num").textContent = fmt(latest.region_members);
   document.getElementById("global-delta").textContent = prev && prev.global_members != null
-    ? "+" + fmt(latest.global_members - prev.global_members) + " since " + prettyDate(prev.date) : "\u00a0";
+    ? signed(latest.global_members - prev.global_members) + " since " + prettyDate(prev.date) : "\u00a0";
   document.getElementById("segment-delta").textContent = prev && prev.southeast_segment != null
-    ? "+" + fmt(latest.southeast_segment - prev.southeast_segment) + " since " + prettyDate(prev.date) : "\u00a0";
+    ? signed(latest.southeast_segment - prev.southeast_segment) + " since " + prettyDate(prev.date) : "\u00a0";
   document.getElementById("region-delta").innerHTML = "&nbsp;";
   var rows = "";
   for (var i = checks.length - 1; i >= 0; i--) {
     var c = checks[i], p = checks[i - 1];
     var ch = (p && p.southeast_segment != null && c.southeast_segment != null)
-      ? '<span class="pos">+' + fmt(c.southeast_segment - p.southeast_segment) + "</span>" : "\u2014";
+      ? '<span class="pos">' + signed(c.southeast_segment - p.southeast_segment) + "</span>" : "\u2014";
     rows += "<tr><td>" + prettyDate(c.date) + "</td><td>" + fmt(c.global_members) + "</td><td>" + fmt(c.southeast_segment) + "</td><td>" + ch + "</td></tr>";
   }
   document.getElementById("history").innerHTML = rows;
